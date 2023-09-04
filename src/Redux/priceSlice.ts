@@ -2,10 +2,36 @@ import { createReducer, createSlice, Dispatch } from "@reduxjs/toolkit";
 import { getRequest } from "../API/API";
 import { InfoPriceType, priceAPI } from "../API/price-api";
 
-type initialStateType = {};
+export type initialStateType = {
+  infoPrice: {
+    e: string | null; // Event type
+    E: number | null; // Event time
+    s: string | null; // Symbol
+    t: number | null; // Trade ID
+    p: number; // Price
+    q: string | null; // Quantity
+    b: number | null; // Buyer order ID
+    a: number | null; // Seller order ID
+    T: number | null; // Trade time
+    m: boolean | null; // Is the buyer the market maker?
+    M: boolean | null; // Ignore
+  };
+};
 
 const initialState: initialStateType = {
-  p: [] as InfoPriceType[],
+  infoPrice: {
+    e: null, // Event type
+    E: null, // Event time
+    s: null, // Symbol
+    t: null, // Trade ID
+    p: 0, // Price
+    q: null, // Quantity
+    b: null, // Buyer order ID
+    a: null, // Seller order ID
+    T: null, // Trade time
+    m: null, // Is the buyer the market maker?
+    M: null, // Ignore
+  },
 };
 
 export const priceSlice = createSlice({
@@ -15,7 +41,7 @@ export const priceSlice = createSlice({
     setP: (state = initialState, { payload: info }): initialStateType => {
       return {
         ...state,
-        p: info,
+        infoPrice: info,
       };
     },
   },
@@ -34,12 +60,12 @@ const newPriceHandlerCreator = (dispatch: Dispatch) => {
   return _newPriceHandlerCreator;
 };
 
-export const startPriceListening = () => async (dispatch: any) => {
+export const startPriceListening = () => async (dispatch: Dispatch) => {
   priceAPI.start();
   priceAPI.subscride(newPriceHandlerCreator(dispatch));
 };
 
-export const stopPriceListening = () => async (dispatch: any) => {
+export const stopPriceListening = () => async (dispatch: Dispatch) => {
   priceAPI.unsubscribe(newPriceHandlerCreator(dispatch));
   priceAPI.stop();
 };

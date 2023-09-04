@@ -1,4 +1,5 @@
 import { createReducer, createSlice } from "@reduxjs/toolkit";
+import { Dispatch } from "react";
 import { getRequest } from "../API/API";
 
 type initialStateType = {
