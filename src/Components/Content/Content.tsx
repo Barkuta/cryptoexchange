@@ -2,24 +2,38 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../../hooks/hooks";
 import { useActions } from "../../hooks/useActions";
 import { useText } from "../../hooks/useSelector";
 import { actions, getPriceThunk } from "../../Redux/contentSlice";
+import {
+  startPriceListening,
+  stopPriceListening,
+} from "../../Redux/priceSlice";
 import s from "./Content.module.css";
 
 let socket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
 
-const Content = (props: any) => {
+const Content: React.FC = (props: any) => {
   const [consist, setConsist] = useState(false);
   const [secondConsist, setSecondConsist] = useState(false);
   const contentReducer = useText(); // связь со стейтом определенного редьюсера
-  const [pr, setPr] = useState();
+  const [pr, setPr] = useState({ p: 0 });
 
   useEffect(() => {
     socket.addEventListener("message", (e) => {
       setPr(JSON.parse(e.data));
     });
   });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(startPriceListening());
+    return () => {
+      dispatch(stopPriceListening());
+    };
+  }, []);
 
   console.log(pr);
 
@@ -93,7 +107,7 @@ const Content = (props: any) => {
   return (
     <div className={s.wrapper}>
       <div>
-        {/* <span>{Math.abs(pr.p)}</span> */}
+        <span>{Math.abs(pr.p)}</span>
         <br />
         <span>{props.price}</span>
       </div>

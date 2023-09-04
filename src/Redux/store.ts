@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reducer as contentReducer } from "./contentSlice";
+import { reducer as priceSlice } from "./priceSlice";
 
 const reducers = combineReducers({
   contentReducer: contentReducer,
+  priceSlice: priceSlice,
 });
 
 export const store = configureStore({

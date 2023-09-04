@@ -10,5 +10,8 @@ let mapStateToProps = (state: any) => {
   };
 };
 
-const ContentContainer = connect(mapStateToProps, getPriceThunk)(Content);
+const ContentContainer: React.FC = connect(
+  mapStateToProps,
+  getPriceThunk
+)(Content);
 export default ContentContainer;

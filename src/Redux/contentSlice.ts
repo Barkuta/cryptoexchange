@@ -1,7 +1,12 @@
 import { createReducer, createSlice } from "@reduxjs/toolkit";
 import { getRequest } from "../API/API";
 
-const initialState = {
+type initialStateType = {
+  count: string;
+  price: string;
+};
+
+const initialState: initialStateType = {
   count: "",
   price: "",
 };
@@ -10,7 +15,7 @@ export const contentSlice = createSlice({
   name: "content",
   initialState,
   reducers: {
-    writeText: (state = initialState, { payload: text }) => {
+    writeText: (state = initialState, { payload: text }): initialStateType => {
       // let newText = {
       //   //создаем переменную в которой описываем структуру итерируемого объекта
       //   id: 2,
@@ -26,7 +31,7 @@ export const contentSlice = createSlice({
         count: text, //text:(часть state) text(action)
       };
     },
-    setPrice: (state = initialState, { payload: data }) => {
+    setPrice: (state = initialState, { payload: data }): initialStateType => {
       return {
         ...state,
         price: data,
