@@ -1,3 +1,6 @@
+import $ from "jquery";
+
+// Выпадающие списки
 export let select = (
   selectItemCode: string,
   selectCode: string,
@@ -15,4 +18,11 @@ export let select = (
     );
     currentText.innerText = text;
   }
+};
+
+//Выборка по ID (Монетки)
+
+export let handelClick = (p: string) => {
+  let coinId = $(`#${p}`);
+  console.log(coinId.attr("id"));
 };

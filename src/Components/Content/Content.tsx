@@ -12,7 +12,12 @@ import CustomerInfo from "./CustomerInfo/CustomerInfo";
 import GetBlock from "./GetBlockOfContent/GetBlock";
 import SendBlock from "./SendBlockOfContent/SendBlock";
 
-const Content: React.FC = (props: any) => {
+type PropsType = {
+  price: number;
+  count: number;
+};
+
+const Content: React.FC<PropsType> = (props) => {
   const price = usePrice();
 
   const dispatch = useAppDispatch();
@@ -46,7 +51,7 @@ const Content: React.FC = (props: any) => {
         </div>
       </div>
       <SendBlock />
-      <GetBlock />
+      <GetBlock count={props.count} price={props.price} />
       <CustomerInfo />
       <div className={s.personInfo}>
         <div className={s.getTitle}>

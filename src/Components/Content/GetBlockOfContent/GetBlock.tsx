@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { select } from "../Assets";
+import { useEffect, useState } from "react";
+import { handelClick, select } from "../Assets";
 import s from "./GetBlock.module.css";
 
-const GetBlock: React.FC = (props: any) => {
+type PropsType = {
+  price: number;
+  count: number;
+};
+
+const GetBlock: React.FC<PropsType> = (props) => {
   const [secondConsist, setSecondConsist] = useState(false);
 
   select(
@@ -34,16 +39,46 @@ const GetBlock: React.FC = (props: any) => {
               secondConsist == false ? s.select__body2 : s.select__body__active2
             }
           >
-            <div className={s.select__item}>Bitcoin</div>
-            <div className={s.select__item}>Ethereum</div>
-            <div className={s.select__item}>Tether TRC20 (USDT)</div>
-            <div className={s.select__item}>Tether ERC20 (USDT)</div>
-            <div className={s.select__item}>Tether BEP20 (USDT)</div>
+            <div
+              id="BTC"
+              onClick={() => handelClick("BTC")}
+              className={s.select__item}
+            >
+              Bitcoin
+            </div>
+            <div
+              id="ETH"
+              onClick={() => handelClick("ETH")}
+              className={s.select__item}
+            >
+              Ethereum
+            </div>
+            <div
+              id="USDT"
+              onClick={() => handelClick("USDT")}
+              className={s.select__item}
+            >
+              Tether TRC20 (USDT)
+            </div>
+            <div
+              id="USDT"
+              onClick={() => handelClick("USDT")}
+              className={s.select__item}
+            >
+              Tether ERC20 (USDT)
+            </div>
+            <div
+              id="USDT"
+              onClick={() => handelClick("USDT")}
+              className={s.select__item}
+            >
+              Tether BEP20 (USDT)
+            </div>
             <div className={s.select__item}>Наличные RUB</div>
             <div className={s.select__item}>Наличные USD</div>
           </div>
         </div>
-        <input type="text" />
+        <input type="text" value={props.count * props.price} />
       </div>
       <div className={s.wallet}>
         <span>На кошелек*</span>

@@ -1,6 +1,7 @@
 import { createReducer, createSlice, Dispatch } from "@reduxjs/toolkit";
 import { getRequest } from "../API/API";
 import { InfoPriceType, priceAPI } from "../API/price-api";
+import { AppDispatch } from "./store";
 
 export type initialStateType = {
   infoPrice: {
@@ -60,12 +61,12 @@ const newPriceHandlerCreator = (dispatch: Dispatch) => {
   return _newPriceHandlerCreator;
 };
 
-export const startPriceListening = () => async (dispatch: Dispatch) => {
+export const startPriceListening = () => async (dispatch: AppDispatch) => {
   priceAPI.start();
   priceAPI.subscride(newPriceHandlerCreator(dispatch));
 };
 
-export const stopPriceListening = () => async (dispatch: Dispatch) => {
+export const stopPriceListening = () => async (dispatch: AppDispatch) => {
   priceAPI.unsubscribe(newPriceHandlerCreator(dispatch));
   priceAPI.stop();
 };

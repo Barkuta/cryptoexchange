@@ -4,7 +4,7 @@ import axios from "axios";
 export const getRequest = {
   getPrice() {
     return axios
-      .get("https://data-api.binance.vision/api/v3/ticker/price")
+      .get("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
       .then((response) => {
         return response.data;
       });

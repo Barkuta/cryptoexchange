@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useActions } from "../../../hooks/useActions";
-import { select } from "../Assets";
+import { handelClick, select } from "../Assets";
 import s from "./SendBlock.module.css";
 
-const SendBlock: React.FC = (props: any) => {
+const SendBlock: React.FC = (props) => {
   const [consist, setConsist] = useState(false);
   const { writeText } = useActions(); // диспатч
 
@@ -39,11 +39,41 @@ const SendBlock: React.FC = (props: any) => {
                 consist == false ? s.select__body : s.select__body__active
               }
             >
-              <div className={s.select__item}>Bitcoin</div>
-              <div className={s.select__item}>Ethereum</div>
-              <div className={s.select__item}>Tether TRC20 (USDT)</div>
-              <div className={s.select__item}>Tether ERC20 (USDT)</div>
-              <div className={s.select__item}>Tether BEP20 (USDT)</div>
+              <div
+                id="BTC"
+                onClick={() => handelClick("BTC")}
+                className={s.select__item}
+              >
+                Bitcoin
+              </div>
+              <div
+                id="ETH"
+                onClick={() => handelClick("ETH")}
+                className={s.select__item}
+              >
+                Ethereum
+              </div>
+              <div
+                id="USDT"
+                onClick={() => handelClick("USDT")}
+                className={s.select__item}
+              >
+                Tether TRC20 (USDT)
+              </div>
+              <div
+                id="USDT"
+                onClick={() => handelClick("USDT")}
+                className={s.select__item}
+              >
+                Tether ERC20 (USDT)
+              </div>
+              <div
+                id="USDT"
+                onClick={() => handelClick("USDT")}
+                className={s.select__item}
+              >
+                Tether BEP20 (USDT)
+              </div>
               <div className={s.select__item}>Наличные RUB</div>
               <div className={s.select__item}>Наличные USD</div>
             </div>

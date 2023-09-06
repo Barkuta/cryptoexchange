@@ -1,15 +1,16 @@
 import { createReducer, createSlice } from "@reduxjs/toolkit";
 import { Dispatch } from "react";
 import { getRequest } from "../API/API";
+import { AppDispatch } from "./store";
 
 type initialStateType = {
-  count: string;
-  price: string;
+  count: number;
+  price: number;
 };
 
 const initialState: initialStateType = {
-  count: "",
-  price: "",
+  count: 0,
+  price: 0,
 };
 
 export const contentSlice = createSlice({
@@ -45,9 +46,9 @@ let { setPrice } = contentSlice.actions;
 
 // let valueOfPrice = () =>
 
-export const getPriceThunk = () => async (dispatch: any) => {
+export const getPriceThunk = () => async (dispatch: AppDispatch) => {
   const result = await getRequest.getPrice();
-  dispatch(setPrice(result[0].price));
+  dispatch(setPrice(Math.abs(result.price)));
 };
 
 export const { actions, reducer } = contentSlice;
