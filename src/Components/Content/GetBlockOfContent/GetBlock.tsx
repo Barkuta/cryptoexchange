@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useAppDispatch } from "../../../hooks/hooks";
+import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./GetBlock.module.css";
 
@@ -9,6 +11,7 @@ type PropsType = {
 
 const GetBlock: React.FC<PropsType> = (props) => {
   const [secondConsist, setSecondConsist] = useState(false);
+  let { setCurrentGetId } = useActions();
 
   select(
     ".GetBlock_select__item__-ZAU6",
@@ -31,7 +34,7 @@ const GetBlock: React.FC<PropsType> = (props) => {
           className={s.select2}
         >
           <div className={s.select2__header}>
-            <span className={s.select2__current}>Bitcoin</span>
+            <span className={s.select2__current}> Tether TRC20 (USDT)</span>
             <div className={s.select2__icon}></div>
           </div>
           <div
@@ -41,35 +44,35 @@ const GetBlock: React.FC<PropsType> = (props) => {
           >
             <div
               id="BTC"
-              onClick={() => handelClick("BTC")}
+              onClick={() => setCurrentGetId(handelClick("BTC"))}
               className={s.select__item}
             >
               Bitcoin
             </div>
             <div
               id="ETH"
-              onClick={() => handelClick("ETH")}
+              onClick={() => setCurrentGetId(handelClick("ETH"))}
               className={s.select__item}
             >
               Ethereum
             </div>
             <div
               id="USDT"
-              onClick={() => handelClick("USDT")}
+              onClick={() => setCurrentGetId(handelClick("USDT"))}
               className={s.select__item}
             >
               Tether TRC20 (USDT)
             </div>
             <div
               id="USDT"
-              onClick={() => handelClick("USDT")}
+              onClick={() => setCurrentGetId(handelClick("USDT"))}
               className={s.select__item}
             >
               Tether ERC20 (USDT)
             </div>
             <div
               id="USDT"
-              onClick={() => handelClick("USDT")}
+              onClick={() => setCurrentGetId(handelClick("USDT"))}
               className={s.select__item}
             >
               Tether BEP20 (USDT)

@@ -15,6 +15,9 @@ import SendBlock from "./SendBlockOfContent/SendBlock";
 type PropsType = {
   price: number;
   count: number;
+  getPriceThunk: () => void;
+  coinIdSend: string;
+  coinIdGet: string;
 };
 
 const Content: React.FC<PropsType> = (props) => {
@@ -50,7 +53,11 @@ const Content: React.FC<PropsType> = (props) => {
           </span>
         </div>
       </div>
-      <SendBlock />
+      <SendBlock
+        getPriceThunk={props.getPriceThunk}
+        coinIdSend={props.coinIdSend}
+        coinIdGet={props.coinIdGet}
+      />
       <GetBlock count={props.count} price={props.price} />
       <CustomerInfo />
       <div className={s.personInfo}>

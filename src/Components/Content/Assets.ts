@@ -1,4 +1,7 @@
 import $ from "jquery";
+import { useAppDispatch } from "../../hooks/hooks";
+import { useActions } from "../../hooks/useActions";
+import { getPriceThunk } from "../../Redux/contentSlice";
 
 // Выпадающие списки
 export let select = (
@@ -24,5 +27,5 @@ export let select = (
 
 export let handelClick = (p: string) => {
   let coinId = $(`#${p}`);
-  console.log(coinId.attr("id"));
+  return coinId.attr("id");
 };

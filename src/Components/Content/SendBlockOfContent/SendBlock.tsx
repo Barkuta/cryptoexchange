@@ -1,11 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./SendBlock.module.css";
+import { idText } from "typescript";
 
-const SendBlock: React.FC = (props) => {
+type PropsType = {
+  price?: number;
+  count?: number;
+  getPriceThunk: (arg1: string, arg2: string) => void;
+  coinIdSend: string;
+  coinIdGet: string;
+};
+
+const SendBlock: React.FC<PropsType> = (props) => {
   const [consist, setConsist] = useState(false);
   const { writeText } = useActions(); // диспатч
+  let { setCurrentSendId } = useActions();
+
+  useEffect(() => {
+    props.getPriceThunk(props.coinIdSend, props.coinIdGet);
+  }, [props.coinIdSend]);
 
   select(
     ".SendBlock_select__item__Glk1Z",
@@ -41,35 +55,35 @@ const SendBlock: React.FC = (props) => {
             >
               <div
                 id="BTC"
-                onClick={() => handelClick("BTC")}
+                onClick={() => setCurrentSendId(handelClick("BTC"))}
                 className={s.select__item}
               >
                 Bitcoin
               </div>
               <div
                 id="ETH"
-                onClick={() => handelClick("ETH")}
+                onClick={() => setCurrentSendId(handelClick("ETH"))}
                 className={s.select__item}
               >
                 Ethereum
               </div>
               <div
                 id="USDT"
-                onClick={() => handelClick("USDT")}
+                onClick={() => setCurrentSendId(handelClick("USDT"))}
                 className={s.select__item}
               >
                 Tether TRC20 (USDT)
               </div>
               <div
                 id="USDT"
-                onClick={() => handelClick("USDT")}
+                onClick={() => setCurrentSendId(handelClick("USDT"))}
                 className={s.select__item}
               >
                 Tether ERC20 (USDT)
               </div>
               <div
                 id="USDT"
-                onClick={() => handelClick("USDT")}
+                onClick={() => setCurrentSendId(handelClick("USDT"))}
                 className={s.select__item}
               >
                 Tether BEP20 (USDT)
