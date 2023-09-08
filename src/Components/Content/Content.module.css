@@ -29,7 +29,7 @@
   color: #000000;
 }
 
-.send {
+/* .send {
   display: grid;
   background-color: #f2f2f2;
   border-radius: 30px;
@@ -140,7 +140,7 @@
   font-size: 25px;
   width: 700px;
   outline: none;
-}
+} */
 
 .personInfo {
   display: grid;

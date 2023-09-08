@@ -1,6 +1,10 @@
 import s from "./CustomerInfo.module.css";
 
-const CustomerInfo: React.FC = (props: any) => {
+type PropsType = {
+  switcher: boolean;
+};
+
+const CustomerInfo: React.FC<PropsType> = (props) => {
   return (
     <div className={s.personInfo}>
       <div className={s.getTitle}>

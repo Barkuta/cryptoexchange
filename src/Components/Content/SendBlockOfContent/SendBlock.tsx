@@ -29,6 +29,7 @@ const SendBlock: React.FC<PropsType> = (props) => {
 
   return (
     <div className={s.send}>
+      {/* <button>Switch</button> */}
       <div className={s.sendTitle}>
         <span>Отдаете</span>
       </div>

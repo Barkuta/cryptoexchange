@@ -1,5 +1,4 @@
-import { createReducer, createSlice } from "@reduxjs/toolkit";
-import { stringify } from "querystring";
+import { createSlice } from "@reduxjs/toolkit";
 import { getRequest } from "../API/API";
 import { AppDispatch } from "./store";
 
@@ -8,6 +7,7 @@ type initialStateType = {
   price: number;
   coinIdSend: string;
   coinIdGet: string;
+  switcher: boolean;
 };
 
 const initialState: initialStateType = {
@@ -15,11 +15,8 @@ const initialState: initialStateType = {
   price: 0,
   coinIdSend: "BTC",
   coinIdGet: "USDT",
+  switcher: false,
 };
-
-let coinIdSend1 = initialState.coinIdSend;
-
-let coinIdGet1 = initialState.coinIdGet;
 
 export const contentSlice = createSlice({
   name: "content",
@@ -65,17 +62,34 @@ export const contentSlice = createSlice({
         coinIdGet: id2,
       };
     },
+    setSwitchCondition: (
+      state = initialState,
+      { payload: value }
+    ): initialStateType => {
+      return {
+        ...state,
+        switcher: value,
+      };
+    },
   },
 });
 
 let { setPrice } = contentSlice.actions;
-
-// let valueOfPrice = () =>
+let { setSwitchCondition } = contentSlice.actions;
 
 export const getPriceThunk =
-  (coinIdSend?: any, coinIdGet?: any) => async (dispatch: AppDispatch) => {
-    const result = await getRequest.getPrice(coinIdSend, coinIdGet);
-    dispatch(setPrice(Math.abs(result.price)));
+  (coinIdSend?: string, coinIdGet?: string) =>
+  async (dispatch: AppDispatch) => {
+    if (coinIdSend !== coinIdGet) {
+      let result = await getRequest.getPrice(coinIdSend, coinIdGet);
+      if (!result) {
+        result = await getRequest.getPrice(coinIdGet, coinIdSend);
+        dispatch(setPrice(Math.abs(result.price)));
+        dispatch(setSwitchCondition(true));
+        console.log("Error2");
+      } else dispatch(setSwitchCondition(false));
+      dispatch(setPrice(Math.abs(result.price)));
+    } //Можно alert || true/false swithcer
   };
 
 export const { actions, reducer } = contentSlice;

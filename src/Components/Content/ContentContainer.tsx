@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { compose } from "redux";
 import { getPriceThunk } from "../../Redux/contentSlice";
 import { RootState } from "../../Redux/store";
 import Content from "./Content";
@@ -12,6 +10,7 @@ type StateType = {
   getPriceThunk: () => void;
   coinIdSend: string;
   coinIdGet: string;
+  switcher: boolean;
 };
 
 const ContentContainer: React.FC<StateType> = (props) => {
@@ -22,6 +21,7 @@ const ContentContainer: React.FC<StateType> = (props) => {
       getPriceThunk={props.getPriceThunk}
       coinIdSend={props.coinIdSend}
       coinIdGet={props.coinIdGet}
+      switcher={props.switcher}
     />
   );
 };
@@ -32,6 +32,7 @@ let mapStateToProps = (state: RootState) => {
     count: state.contentReducer.count,
     coinIdSend: state.contentReducer.coinIdSend,
     coinIdGet: state.contentReducer.coinIdGet,
+    switcher: state.contentReducer.switcher,
   };
 };
 

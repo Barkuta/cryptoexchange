@@ -7,6 +7,10 @@ import s from "./GetBlock.module.css";
 type PropsType = {
   price: number;
   count: number;
+  getPriceThunk: (arg1: string, arg2: string) => void;
+  coinIdSend: string;
+  coinIdGet: string;
+  switcher: boolean;
 };
 
 const GetBlock: React.FC<PropsType> = (props) => {
@@ -18,6 +22,16 @@ const GetBlock: React.FC<PropsType> = (props) => {
     ".GetBlock_select2__6fd2U",
     ".GetBlock_select2__current__vsVe1"
   );
+
+  useEffect(() => {
+    props.getPriceThunk(props.coinIdSend, props.coinIdGet);
+  }, [props.coinIdGet]);
+
+  let switchFn: () => number = () => {
+    if (props.switcher) {
+      return Math.abs(props.count / props.price);
+    } else return Math.abs(props.count * props.price);
+  };
 
   return (
     <div className={s.get}>
@@ -81,7 +95,7 @@ const GetBlock: React.FC<PropsType> = (props) => {
             <div className={s.select__item}>Наличные USD</div>
           </div>
         </div>
-        <input type="text" value={props.count * props.price} />
+        <input type="text" value={switchFn()} />
       </div>
       <div className={s.wallet}>
         <span>На кошелек*</span>

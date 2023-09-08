@@ -18,6 +18,7 @@ type PropsType = {
   getPriceThunk: () => void;
   coinIdSend: string;
   coinIdGet: string;
+  switcher: boolean;
 };
 
 const Content: React.FC<PropsType> = (props) => {
@@ -58,8 +59,15 @@ const Content: React.FC<PropsType> = (props) => {
         coinIdSend={props.coinIdSend}
         coinIdGet={props.coinIdGet}
       />
-      <GetBlock count={props.count} price={props.price} />
-      <CustomerInfo />
+      <GetBlock
+        count={props.count}
+        price={props.price}
+        getPriceThunk={props.getPriceThunk}
+        coinIdSend={props.coinIdSend}
+        coinIdGet={props.coinIdGet}
+        switcher={props.switcher}
+      />
+      <CustomerInfo switcher={props.switcher} />
       <div className={s.personInfo}>
         <div className={s.getTitle}>
           <span>Обмен</span>
