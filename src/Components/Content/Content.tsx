@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { IShippingFields } from "../../app.interface";
 import { useAppDispatch } from "../../hooks/hooks";
 import { usePrice } from "../../hooks/useSelector";
 
@@ -19,22 +21,47 @@ type PropsType = {
   coinIdSend: string;
   coinIdGet: string;
   switcher: boolean;
+  startPriceListening: () => void;
+  stopPriceListening: () => void;
 };
 
 const Content: React.FC<PropsType> = (props) => {
+  const [inputs, setInputs] = useState();
+
+  const [ticker2Value, setTicker2Value] = useState(0);
+
   const price = usePrice();
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(startPriceListening());
-    return () => {
-      dispatch(stopPriceListening());
-    };
-  }, []);
+  // useEffect(() => {
+  //   dispatch(props.startPriceListening);
+  //   return () => {
+  //     dispatch(props.stopPriceListening);
+  //   };
+  // }, []);
+
+  const { register, handleSubmit, watch, formState, setValue } =
+    useForm<IShippingFields>();
+
+  const { dirtyFields, touchedFields, isDirty } = formState;
+  const onSubmit: SubmitHandler<IShippingFields> = (data) => {
+    console.log(data);
+  };
+
+  let switchFn1: () => any = () => {
+    if (props.switcher) {
+      return Math.abs(props.count / props.price);
+    } else {
+      return Math.abs(props.count * props.price);
+    }
+
+    // const name = event.target.name;
+    // const value = document.getElementById("ticker2");
+  };
 
   return (
-    <div className={s.wrapper}>
+    <form onSubmit={handleSubmit(onSubmit)} className={s.wrapper}>
       <div>
         <span>{Math.abs(price.p)}</span>
         <br />
@@ -58,6 +85,10 @@ const Content: React.FC<PropsType> = (props) => {
         getPriceThunk={props.getPriceThunk}
         coinIdSend={props.coinIdSend}
         coinIdGet={props.coinIdGet}
+        setInputs={setInputs}
+        inputs={inputs}
+        ticker2Value={ticker2Value}
+        register={register}
       />
       <GetBlock
         count={props.count}
@@ -66,8 +97,26 @@ const Content: React.FC<PropsType> = (props) => {
         coinIdSend={props.coinIdSend}
         coinIdGet={props.coinIdGet}
         switcher={props.switcher}
+        setInputs={setInputs}
+        inputs={inputs}
+        setTicker2Value={setTicker2Value}
+        ticker2Value={ticker2Value}
+        register={register}
+        dirtyFields={dirtyFields}
+        touchedFields={touchedFields}
+        isDirty={isDirty}
       />
-      <CustomerInfo switcher={props.switcher} />
+      <CustomerInfo
+        switcher={props.switcher}
+        setInputs={setInputs}
+        inputs={inputs}
+        register={register}
+      />
+
+      <button onClick={() => setValue("total_price", String(switchFn1()))}>
+        IT
+      </button>
+
       <div className={s.personInfo}>
         <div className={s.getTitle}>
           <span>Обмен</span>
@@ -95,7 +144,7 @@ const Content: React.FC<PropsType> = (props) => {
           </ol>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

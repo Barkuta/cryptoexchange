@@ -3,6 +3,8 @@ import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./SendBlock.module.css";
 import { idText } from "typescript";
+import { SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
+import { IShippingFields } from "../../../app.interface";
 
 type PropsType = {
   price?: number;
@@ -10,6 +12,10 @@ type PropsType = {
   getPriceThunk: (arg1: string, arg2: string) => void;
   coinIdSend: string;
   coinIdGet: string;
+  setInputs: any;
+  inputs: any;
+  ticker2Value: any;
+  register: UseFormRegister<IShippingFields>;
 };
 
 const SendBlock: React.FC<PropsType> = (props) => {
@@ -27,8 +33,21 @@ const SendBlock: React.FC<PropsType> = (props) => {
     ".SendBlock_select__current__IwlkI"
   );
 
+  // const handleChangeSend = (event: any) => {
+  //
+  //   const name = event.target.name;
+
+  //   console.log(props.ticker2Value);
+  //   const value = event.target.value;
+  //   props.setInputs((values: any) => ({
+  //     ...values,
+  //     [name]: value,
+  //     ticker2: props.ticker2Value,
+  //   }));
+  // };
+
   return (
-    <div className={s.send}>
+    <form className={s.send}>
       {/* <button>Switch</button> */}
       <div className={s.sendTitle}>
         <span>Отдаете</span>
@@ -97,11 +116,16 @@ const SendBlock: React.FC<PropsType> = (props) => {
             id="1"
             type="text"
             placeholder="Count"
-            onChange={(el) => writeText(el.target.value)}
+            // onChange={(event) => writeText(event.target.value)}
+            {...props.register("count", {
+              onChange: (e) => {
+                writeText(e.target.value);
+              },
+            })}
           />
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPriceThunk } from "../../Redux/contentSlice";
+import {
+  startPriceListening,
+  stopPriceListening,
+} from "../../Redux/priceSlice";
 import { RootState } from "../../Redux/store";
 import Content from "./Content";
 
@@ -11,6 +15,8 @@ type StateType = {
   coinIdSend: string;
   coinIdGet: string;
   switcher: boolean;
+  startPriceListening: () => void;
+  stopPriceListening: () => void;
 };
 
 const ContentContainer: React.FC<StateType> = (props) => {
@@ -22,6 +28,8 @@ const ContentContainer: React.FC<StateType> = (props) => {
       coinIdSend={props.coinIdSend}
       coinIdGet={props.coinIdGet}
       switcher={props.switcher}
+      startPriceListening={props.startPriceListening}
+      stopPriceListening={props.stopPriceListening}
     />
   );
 };
@@ -36,4 +44,8 @@ let mapStateToProps = (state: RootState) => {
   };
 };
 
-export default connect(mapStateToProps, { getPriceThunk })(ContentContainer);
+export default connect(mapStateToProps, {
+  getPriceThunk,
+  startPriceListening,
+  stopPriceListening,
+})(ContentContainer);

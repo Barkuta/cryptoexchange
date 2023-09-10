@@ -142,6 +142,20 @@
   outline: none;
 } */
 
+.getTitle {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.getTitle span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 48px;
+  text-align: center;
+  color: #000000;
+}
+
 .personInfo {
   display: grid;
   grid-template-rows: 60px 1fr;
