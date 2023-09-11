@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./SendBlock.module.css";
-import { idText } from "typescript";
-import { SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 
 type PropsType = {
@@ -12,9 +11,6 @@ type PropsType = {
   getPriceThunk: (arg1: string, arg2: string) => void;
   coinIdSend: string;
   coinIdGet: string;
-  setInputs: any;
-  inputs: any;
-  ticker2Value: any;
   register: UseFormRegister<IShippingFields>;
 };
 
@@ -32,19 +28,6 @@ const SendBlock: React.FC<PropsType> = (props) => {
     ".SendBlock_select__uB-sj",
     ".SendBlock_select__current__IwlkI"
   );
-
-  // const handleChangeSend = (event: any) => {
-  //
-  //   const name = event.target.name;
-
-  //   console.log(props.ticker2Value);
-  //   const value = event.target.value;
-  //   props.setInputs((values: any) => ({
-  //     ...values,
-  //     [name]: value,
-  //     ticker2: props.ticker2Value,
-  //   }));
-  // };
 
   return (
     <form className={s.send}>
@@ -116,7 +99,6 @@ const SendBlock: React.FC<PropsType> = (props) => {
             id="1"
             type="text"
             placeholder="Count"
-            // onChange={(event) => writeText(event.target.value)}
             {...props.register("count", {
               onChange: (e) => {
                 writeText(e.target.value);

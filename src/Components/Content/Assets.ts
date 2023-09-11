@@ -26,10 +26,3 @@ export let handelClick = (p: string) => {
   let coinId = $(`#${p}`);
   return coinId.attr("id");
 };
-
-// export const handleChange = (event: any) => {
-//   writeText(event.target.value);
-//   const name = event.target.name;
-//   const value = event.target.value;
-//   props.setInputs((values: any) => ({ ...values, [name]: value }));
-// };
