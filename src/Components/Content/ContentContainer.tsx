@@ -11,6 +11,7 @@ import Content from "./Content";
 import { usePrice } from "../../hooks/useSelector";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IShippingFields } from "../../app.interface";
+import axios from "axios";
 
 type StateType = {
   price: number;
@@ -31,6 +32,7 @@ const ContentContainer: React.FC<StateType> = (props) => {
 
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
     console.log(data);
+    axios.post("http://localhost:8888/api/exchangeInfo/save", data);
   };
 
   return (

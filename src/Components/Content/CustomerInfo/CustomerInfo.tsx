@@ -16,7 +16,7 @@ const CustomerInfo: React.FC<PropsType> = (props) => {
       </div>
       <div className={s.emailBlock}>
         <span>E-mail*</span>
-        <input {...props.register("Email")} />
+        <input {...props.register("email")} />
       </div>
       <div className={s.button}>
         <button>Обменять</button>
