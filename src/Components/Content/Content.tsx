@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import {
+  FieldErrors,
   SubmitHandler,
   useForm,
   UseFormHandleSubmit,
@@ -10,6 +11,7 @@ import {
 } from "react-hook-form";
 import { IShippingFields } from "../../app.interface";
 import { useAppDispatch } from "../../hooks/hooks";
+import { getTickerInfo } from "./Assets";
 import s from "./Content.module.css";
 import CustomerInfo from "./CustomerInfo/CustomerInfo";
 import GetBlockWithSwitcher from "./GetBlockOfContent/GetBlockContainer";
@@ -42,17 +44,18 @@ type PropsType = {
   handleSubmit: UseFormHandleSubmit<IShippingFields, undefined>;
   setValue: UseFormSetValue<IShippingFields>;
   onSubmit: SubmitHandler<IShippingFields>;
+  errors: FieldErrors<IShippingFields>;
 };
 
 const Content: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(props.startPriceListening);
-    return () => {
-      dispatch(props.stopPriceListening);
-    };
-  }, []);
+  // useEffect(() => {
+  //   dispatch(props.startPriceListening);
+  //   return () => {
+  //     dispatch(props.stopPriceListening);
+  //   };
+  // }, []);
 
   return (
     <form onSubmit={props.handleSubmit(props.onSubmit)} className={s.wrapper}>
@@ -80,6 +83,7 @@ const Content: React.FC<PropsType> = (props) => {
         coinIdSend={props.coinIdSend}
         coinIdGet={props.coinIdGet}
         register={props.register}
+        errors={props.errors}
       />
       <GetBlockWithSwitcher
         count={props.count}
@@ -88,15 +92,30 @@ const Content: React.FC<PropsType> = (props) => {
         coinIdSend={props.coinIdSend}
         coinIdGet={props.coinIdGet}
         switcher={props.switcher}
+        errors={props.errors}
         register={props.register}
         switchFn={function () {
           throw new Error("Function not implemented.");
         }}
       />
-      <CustomerInfo switcher={props.switcher} register={props.register} />
+      <CustomerInfo
+        switcher={props.switcher}
+        register={props.register}
+        errors={props.errors}
+      />
 
       <button
-        onClick={() => props.setValue("total_price", String(props.switchFn()))}
+        onClick={() => {
+          props.setValue("total_price", String(props.switchFn()));
+          props.setValue(
+            "ticker1",
+            String(getTickerInfo(".SendBlock_select__current__IwlkI"))
+          );
+          props.setValue(
+            "ticker2",
+            String(getTickerInfo(".GetBlock_select2__current__vsVe1"))
+          );
+        }}
       >
         IT
       </button>

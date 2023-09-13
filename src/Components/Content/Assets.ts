@@ -26,3 +26,8 @@ export let handelClick = (p: string) => {
   let coinId = $(`#${p}`);
   return coinId.attr("id");
 };
+
+export let getTickerInfo = (currentTickerCode: string) => {
+  let node = document.querySelector(`${currentTickerCode}`)?.textContent;
+  return node;
+};

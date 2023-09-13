@@ -111,11 +111,11 @@
 
 .wallet {
   display: grid;
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: 30px 59px;
   margin-left: 20px;
 }
 
-.wallet span {
+.walletTextBlock {
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -131,4 +131,10 @@
   font-size: 25px;
   width: 700px;
   outline: none;
+}
+
+.errorWallet {
+  font-size: 19px;
+  color: red;
+  margin-top: 5px;
 }

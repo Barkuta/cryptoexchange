@@ -186,3 +186,13 @@
 .select__item:hover {
   background-color: #b0b0b0;
 }
+
+.errorCount {
+  display: grid;
+  justify-content: end;
+  align-items: start;
+  height: 120px;
+  margin-right: 116px;
+  font-size: 19px;
+  color: red;
+}

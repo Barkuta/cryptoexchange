@@ -28,7 +28,12 @@ type StateType = {
 const ContentContainer: React.FC<StateType> = (props) => {
   const websocketPrice = usePrice();
 
-  const { register, handleSubmit, setValue } = useForm<IShippingFields>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<IShippingFields>();
 
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
     console.log(data);
@@ -51,6 +56,7 @@ const ContentContainer: React.FC<StateType> = (props) => {
       handleSubmit={handleSubmit}
       setValue={setValue}
       onSubmit={onSubmit}
+      errors={errors}
     />
   );
 };

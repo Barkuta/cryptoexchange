@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./GetBlock.module.css";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 
 type PropsType = {
@@ -10,6 +10,7 @@ type PropsType = {
   switchFn: () => any;
   setSecondConsist: React.Dispatch<React.SetStateAction<boolean>>;
   secondConsist: boolean;
+  errors: FieldErrors<IShippingFields>;
 };
 
 const GetBlock: React.FC<PropsType> = (props) => {
@@ -36,7 +37,9 @@ const GetBlock: React.FC<PropsType> = (props) => {
           className={s.select2}
         >
           <div className={s.select2__header}>
-            <span className={s.select2__current}> Tether TRC20 (USDT)</span>
+            <span className={s.select2__current} {...props.register("ticker2")}>
+              Tether TRC20 (USDT)
+            </span>
             <div className={s.select2__icon}></div>
           </div>
           <div
@@ -93,8 +96,15 @@ const GetBlock: React.FC<PropsType> = (props) => {
         />
       </div>
       <div className={s.wallet}>
-        <span>На кошелек*</span>
-        <input {...props.register("wallet")} />
+        <div className={s.walletTextBlock}>На кошелек*</div>
+        <input
+          {...props.register("wallet", {
+            required: true,
+          })}
+        />
+        {props.errors.wallet && (
+          <span className={s.errorWallet}>This field is required</span>
+        )}
       </div>
     </form>
   );

@@ -14,11 +14,10 @@
 
 .personInfo {
   display: grid;
-  grid-template-rows: 60px 1fr;
   background-color: #f2f2f2;
   margin-top: 40px;
   border-radius: 30px;
-  grid-template-rows: 60px 1fr 100px;
+  grid-template-rows: 60px 125px;
 }
 
 .emailBlock {
@@ -48,6 +47,9 @@
 
 .button {
   margin-left: 20px;
+  margin-left: 20px;
+  align-self: end;
+  margin-bottom: 10px;
 }
 
 .button button {
@@ -67,4 +69,10 @@
 
 .button :hover {
   background: #b7b7b7;
+}
+
+.errorEmail {
+  font-size: 19px;
+  color: red;
+  margin-left: 22px;
 }

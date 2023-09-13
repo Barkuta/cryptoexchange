@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./SendBlock.module.css";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 
 type PropsType = {
@@ -12,6 +12,7 @@ type PropsType = {
   coinIdSend: string;
   coinIdGet: string;
   register: UseFormRegister<IShippingFields>;
+  errors: any;
 };
 
 const SendBlock: React.FC<PropsType> = (props) => {
@@ -48,7 +49,12 @@ const SendBlock: React.FC<PropsType> = (props) => {
             className={s.select}
           >
             <div className={s.select__header}>
-              <span className={s.select__current}>Bitcoin</span>
+              <span
+                className={s.select__current}
+                {...props.register("ticker1")}
+              >
+                Bitcoin
+              </span>
               <div className={s.select__icon}></div>
             </div>
             <div
@@ -103,9 +109,13 @@ const SendBlock: React.FC<PropsType> = (props) => {
               onChange: (e) => {
                 writeText(e.target.value);
               },
+              required: true,
             })}
           />
         </div>
+        {props.errors.count && (
+          <span className={s.errorCount}>This field is required</span>
+        )}
       </div>
     </form>
   );

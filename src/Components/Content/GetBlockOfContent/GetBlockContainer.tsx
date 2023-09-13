@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { handelClick, select } from "../Assets";
 import s from "./GetBlock.module.css";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 import GetBlock from "./GetBlock";
 import { WithSwitchTickersHOC } from "../../../HOC/withSwitchTickersHOC";
@@ -16,6 +16,7 @@ type PropsType = {
   switcher: boolean;
   register: UseFormRegister<IShippingFields>;
   switchFn: () => any;
+  errors: FieldErrors<IShippingFields>;
 };
 
 const GetBlockContainer: React.FC<PropsType> = (props) => {
@@ -36,6 +37,7 @@ const GetBlockContainer: React.FC<PropsType> = (props) => {
       setSecondConsist={setSecondConsist}
       secondConsist={secondConsist}
       {...props}
+      errors={props.errors}
       switchFn={props.switchFn}
     />
   );
