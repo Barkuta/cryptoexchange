@@ -1,5 +1,4 @@
 .getTitle {
-  margin-left: 20px;
   margin-top: 10px;
 }
 
@@ -9,15 +8,17 @@
   font-size: 35px;
   line-height: 48px;
   text-align: center;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 .personInfo {
   display: grid;
-  background-color: #f2f2f2;
-  margin-top: 40px;
-  border-radius: 30px;
+  margin-top: 16px;
   grid-template-rows: 60px 125px;
+  height: 156px;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 65, 102, 0.56);
+  background: rgba(114, 128, 255, 0.08);
 }
 
 .emailBlock {
@@ -32,17 +33,19 @@
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 .emailBlock input {
   margin-top: 10px;
   height: 45px;
-  border: 1px solid #d9d9d9;
-  background: white;
   font-size: 25px;
   width: 400px;
   outline: none;
+  border-radius: 10px;
+  border: 1px solid #496f9c;
+  background: rgba(52, 17, 17, 0);
+  color: #cdcdcd;
 }
 
 .button {

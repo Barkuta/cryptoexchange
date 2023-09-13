@@ -1,12 +1,19 @@
+.getWrapper {
+  z-index: 1;
+}
+
 .get {
   display: grid;
-  background-color: #f2f2f2;
-  border-radius: 30px;
-  margin-top: 40px;
+  border-radius: 10px;
+  margin-top: 16px;
+  height: 230px;
+  align-content: center;
+  gap: 20px;
+  border: 1px solid rgba(34, 65, 102, 0.56);
+  background: rgba(114, 128, 255, 0.08);
 }
 
 .getTitle {
-  margin-left: 20px;
   margin-top: 10px;
 }
 
@@ -16,7 +23,7 @@
   font-size: 35px;
   line-height: 48px;
   text-align: center;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 .inputBlock {
@@ -33,6 +40,10 @@
   background: white;
   font-size: 25px;
   outline: none;
+  border-radius: 10px;
+  border: 1px solid #256058;
+  background: rgba(52, 17, 17, 0);
+  color: #cdcdcd;
 }
 
 .inputBlock select {
@@ -52,13 +63,16 @@
   display: grid;
   grid-template-columns: 1fr 30px;
   height: 50px;
-  border: 1px solid #d9d9d9;
-  background: white;
+
   font-size: 25px;
   outline: none;
   cursor: pointer;
   justify-content: center;
   align-content: center;
+  border-radius: 10px;
+  border: 1px solid #496f9c;
+  background: rgba(52, 17, 17, 0);
+  color: #cdcdcd;
 }
 
 .select2__current {
@@ -77,15 +91,19 @@
 }
 
 .select__body__active2 {
+  margin-top: 10px;
   display: block;
-  border: 1px solid #d9d9d9;
   border-top: 0;
   position: absolute;
   left: 0;
   right: 0;
   top: 100%;
-  background-color: #fff;
   z-index: 1;
+  border-radius: 10px;
+  border: 1px solid #496f9c;
+  background: rgba(114, 128, 255, 0.08);
+  backdrop-filter: blur(5px);
+  color: #cdcdcd;
 }
 
 .select__body2 {
@@ -106,7 +124,7 @@
 }
 
 .select__item:hover {
-  background-color: #b0b0b0;
+  background-color: rgba(118, 122, 180, 0.293);
 }
 
 .wallet {
@@ -120,17 +138,19 @@
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 .wallet input {
   margin-top: 10px;
   height: 45px;
-  border: 1px solid #d9d9d9;
-  background: white;
   font-size: 25px;
   width: 700px;
   outline: none;
+  border-radius: 10px;
+  border: 1px solid #496f9c;
+  background: rgba(52, 17, 17, 0);
+  color: #cdcdcd;
 }
 
 .errorWallet {

@@ -4,13 +4,12 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  grid-template-rows: 158px 327px 359px 359px 359px;
+  grid-template-rows: 180px 200px 305px 250px 50px;
 }
 
 .attention {
   display: grid;
-  margin-left: 20px;
-  margin-right: 20px;
+  z-index: 1;
 }
 
 .titleOne span {
@@ -18,7 +17,7 @@
   font-weight: 700;
   font-size: 50px;
   line-height: 68px;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 .description span {
@@ -26,7 +25,7 @@
   font-weight: 300;
   font-size: 20px;
   line-height: 30px;
-  color: #000000;
+  color: #cdcdcd;
 }
 
 /* .send {
@@ -142,6 +141,14 @@
   outline: none;
 } */
 
+.sendTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 48px;
+  color: #cdcdcd;
+}
+
 .getTitle {
   margin-left: 20px;
   margin-top: 10px;
@@ -156,13 +163,14 @@
   color: #000000;
 }
 
-.personInfo {
+.changeInfo {
   display: grid;
-  grid-template-rows: 60px 1fr;
   background-color: #f2f2f2;
-  margin-top: 40px;
-  border-radius: 30px;
-  grid-template-rows: 60px 1fr 100px;
+  margin-top: 16px;
+  height: 230px;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 65, 102, 0.56);
+  background: rgba(114, 128, 255, 0.08);
 }
 
 .emailBlock {
@@ -213,6 +221,15 @@
   background: #b7b7b7;
 }
 
+.ChangeTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 48px;
+  color: #cdcdcd;
+  margin-top: 10px;
+}
+
 .change ol {
   margin-top: 35px;
 }
@@ -221,7 +238,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 27px;
-  color: #000000;
+  color: #cdcdcd;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -345,4 +362,100 @@
 
 .select__item:hover {
   background-color: #b0b0b0;
+}
+
+.submitButton {
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(
+    91deg,
+    rgba(45, 94, 151, 0.15) 25.63%,
+    rgba(65, 197, 157, 0.15) 82.92%
+  );
+  color: #cdcdcd;
+}
+
+.cardWrapper {
+  /* background-color: red; */
+  height: 250px;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px;
+  justify-content: space-between;
+}
+
+.card {
+  /* background-color: blue; */
+  border-radius: 30px;
+  border: 1px solid rgba(34, 65, 102, 0.56);
+  background: rgba(114, 128, 255, 0.08);
+  height: 240px;
+  width: 200px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: 65px 20px 20px;
+}
+
+.infoCardContainer {
+  display: grid;
+
+  margin-top: 35px;
+}
+
+.cardImg {
+  display: grid;
+  justify-content: center;
+  /* background-color: #000000; */
+}
+
+.cardImg img {
+  display: grid;
+  height: 65px;
+  object-fit: cover;
+}
+
+.cardTicker {
+  display: grid;
+  margin-top: 30px;
+  justify-self: center;
+}
+
+.cardTicker span {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #cdcdcd;
+}
+
+.priceTicker {
+  margin-top: 25px;
+  justify-self: center;
+}
+
+.priceTicker span {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  /* color: #cdcdcd; */
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }

@@ -31,93 +31,94 @@ const SendBlock: React.FC<PropsType> = (props) => {
   );
 
   return (
-    <form className={s.send}>
-      {/* <button>Switch</button> */}
+    <div className={s.sendWrapper}>
       <div className={s.sendTitle}>
         <span>Отдаете</span>
       </div>
-      <div className={s.sendBlock}>
-        <div className={s.rateInfo}>
-          <span>Курс обмена:</span>
-          <span className={s.span2}>Объем:</span>
-        </div>
-        <div className={s.inputBlock}>
-          <div
-            onClick={() => {
-              consist == false ? setConsist(true) : setConsist(false);
-            }}
-            className={s.select}
-          >
-            <div className={s.select__header}>
-              <span
-                className={s.select__current}
-                {...props.register("ticker1")}
-              >
-                Bitcoin
-              </span>
-              <div className={s.select__icon}></div>
-            </div>
+      <form className={s.send}>
+        <div className={s.sendBlock}>
+          <div className={s.inputBlock}>
             <div
-              className={
-                consist == false ? s.select__body : s.select__body__active
-              }
+              onClick={() => {
+                consist == false ? setConsist(true) : setConsist(false);
+              }}
+              className={s.select}
             >
-              <div
-                id="BTC"
-                onClick={() => setCurrentSendId(handelClick("BTC"))}
-                className={s.select__item}
-              >
-                Bitcoin
+              <div className={s.select__header}>
+                <span
+                  className={s.select__current}
+                  {...props.register("ticker1")}
+                >
+                  Bitcoin
+                </span>
+                <div className={s.select__icon}></div>
               </div>
               <div
-                id="ETH"
-                onClick={() => setCurrentSendId(handelClick("ETH"))}
-                className={s.select__item}
+                className={
+                  consist == false ? s.select__body : s.select__body__active
+                }
               >
-                Ethereum
+                <div
+                  id="BTC"
+                  onClick={() => setCurrentSendId(handelClick("BTC"))}
+                  className={s.select__item}
+                >
+                  Bitcoin
+                </div>
+                <div
+                  id="ETH"
+                  onClick={() => setCurrentSendId(handelClick("ETH"))}
+                  className={s.select__item}
+                >
+                  Ethereum
+                </div>
+                <div
+                  id="USDT"
+                  onClick={() => setCurrentSendId(handelClick("USDT"))}
+                  className={s.select__item}
+                >
+                  Tether TRC20 (USDT)
+                </div>
+                <div
+                  id="USDT"
+                  onClick={() => setCurrentSendId(handelClick("USDT"))}
+                  className={s.select__item}
+                >
+                  Tether ERC20 (USDT)
+                </div>
+                <div
+                  id="USDT"
+                  onClick={() => setCurrentSendId(handelClick("USDT"))}
+                  className={s.select__item}
+                >
+                  Tether BEP20 (USDT)
+                </div>
+                <div className={s.select__item}>Наличные RUB</div>
+                <div className={s.select__item}>Наличные USD</div>
               </div>
-              <div
-                id="USDT"
-                onClick={() => setCurrentSendId(handelClick("USDT"))}
-                className={s.select__item}
-              >
-                Tether TRC20 (USDT)
-              </div>
-              <div
-                id="USDT"
-                onClick={() => setCurrentSendId(handelClick("USDT"))}
-                className={s.select__item}
-              >
-                Tether ERC20 (USDT)
-              </div>
-              <div
-                id="USDT"
-                onClick={() => setCurrentSendId(handelClick("USDT"))}
-                className={s.select__item}
-              >
-                Tether BEP20 (USDT)
-              </div>
-              <div className={s.select__item}>Наличные RUB</div>
-              <div className={s.select__item}>Наличные USD</div>
             </div>
+            <input
+              id="1"
+              type="text"
+              placeholder="Count"
+              {...props.register("count", {
+                onChange: (e) => {
+                  writeText(e.target.value);
+                },
+                required: true,
+              })}
+            />
           </div>
-          <input
-            id="1"
-            type="text"
-            placeholder="Count"
-            {...props.register("count", {
-              onChange: (e) => {
-                writeText(e.target.value);
-              },
-              required: true,
-            })}
-          />
+          {props.errors.count && (
+            <span className={s.errorCount}>This field is required</span>
+          )}
+          <div className={s.rateInfo}>
+            <span>Курс обмена:</span>
+            <span className={s.span2}>Объем:</span>
+          </div>
         </div>
-        {props.errors.count && (
-          <span className={s.errorCount}>This field is required</span>
-        )}
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
