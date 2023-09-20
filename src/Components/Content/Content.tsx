@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useEffect } from "react";
 import {
   FieldErrors,
@@ -18,6 +18,7 @@ import GetBlockWithSwitcher from "./GetBlockOfContent/GetBlockContainer";
 import SendBlock from "./SendBlockOfContent/SendBlock";
 import btc from "../../Images/Bitcoin-Logo.png";
 import { event } from "jquery";
+import { Link, useNavigate } from "react-router-dom";
 
 type PropsType = {
   price: number;
@@ -52,29 +53,32 @@ type PropsType = {
 const Content: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(props.startPriceListening);
-    return () => {
-      dispatch(props.stopPriceListening);
-    };
-  }, []);
+  // useEffect(() => {
+  //   dispatch(props.startPriceListening);
+  //   return () => {
+  //     dispatch(props.stopPriceListening);
+  //   };
+  // }, []);
 
   let [price, setPrice] = useState(0);
-  let [consist, setConsist] = useState(true);
+  let [consist, setConsist] = useState(false);
 
   let prevWsPrice = 0;
 
   let wsPrice = props.websocketPrice.p;
 
-  setInterval(() => setPrice(wsPrice), 800);
+  setInterval(() => setPrice(wsPrice), 1000);
 
   let changeColor = () => {
     if (wsPrice > price) {
       return true;
-    } else if (wsPrice < price) {
-      return consist;
+    }
+    if (wsPrice <= price) {
+      return false;
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     // <span>{props.price}</span>
@@ -99,6 +103,7 @@ const Content: React.FC<PropsType> = (props) => {
         coinIdGet={props.coinIdGet}
         register={props.register}
         errors={props.errors}
+        price={props.price}
       />
       <GetBlockWithSwitcher
         count={props.count}

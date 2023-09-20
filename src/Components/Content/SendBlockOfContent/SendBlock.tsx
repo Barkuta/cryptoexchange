@@ -113,7 +113,7 @@ const SendBlock: React.FC<PropsType> = (props) => {
             <span className={s.errorCount}>This field is required</span>
           )}
           <div className={s.rateInfo}>
-            <span>Курс обмена:</span>
+            <span>Курс обмена: 1 BTC = {props.price} USDT</span>
             <span className={s.span2}>Объем:</span>
           </div>
         </div>

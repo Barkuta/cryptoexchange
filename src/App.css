@@ -4,7 +4,7 @@
     "h"
     "c"
     "f";
-  grid-template-rows: 20px 1fr;
+  grid-template-rows: 50px 1fr;
   background: linear-gradient(
       243deg,
       rgb(54 255 195 / 44%) -20.7%,

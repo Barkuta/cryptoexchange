@@ -74,8 +74,8 @@
   background: #b7b7b7;
 }
 
-.errorEmail {
+.errorEmail span {
+  display: grid;
   font-size: 19px;
   color: red;
-  margin-left: 22px;
 }

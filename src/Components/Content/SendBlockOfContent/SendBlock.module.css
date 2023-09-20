@@ -31,7 +31,7 @@
 
 .rateInfo {
   display: grid;
-  grid-template-columns: 130px 309px;
+  grid-template-columns: 300px 309px;
   justify-content: space-between;
 }
 
@@ -190,10 +190,10 @@
 
 .errorCount {
   display: grid;
-  justify-content: end;
-  align-items: start;
-  height: 120px;
-  margin-right: 116px;
+  position: absolute;
+  justify-self: end;
+  margin-right: 300px;
+  margin-top: 15px;
   font-size: 19px;
   color: red;
 }

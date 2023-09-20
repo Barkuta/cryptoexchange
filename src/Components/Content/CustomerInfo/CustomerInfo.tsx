@@ -30,14 +30,17 @@ const CustomerInfo: React.FC<PropsType> = (props) => {
                 /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
             })}
           />
+          {props.errors.email?.type === "pattern" && (
+            <div className={s.errorEmail}>
+              <span>The email is incorrect</span>
+            </div>
+          )}
+          {props.errors.email?.type === "required" && (
+            <div className={s.errorEmail}>
+              <span>This field is required</span>
+            </div>
+          )}
         </div>
-        {props.errors.email?.type === "pattern" && (
-          <span className={s.errorEmail}>The email is incorrect</span>
-        )}
-
-        {props.errors.email?.type === "required" && (
-          <span className={s.errorEmail}>This field is required</span>
-        )}
       </form>
     </div>
   );
