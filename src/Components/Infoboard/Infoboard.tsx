@@ -1,8 +1,34 @@
 import s from "./Infoboard.module.css";
 import btc from "../../Images/bitcoin.svg";
 import eth from "../../Images/ethereum-eth.svg";
+import usdt from "../../Images/tether-1.svg";
+import axios from "axios";
+import { Key, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { RootState } from "../../Redux/store";
 
-const Infoboard: React.FC = () => {
+export type TypeArray = any;
+
+export type PropsType = {
+  coinIdSend: string;
+  coinIdGet: string;
+};
+
+const Infoboard: React.FC<PropsType> = (props) => {
+  const [info, setInfo] = useState<TypeArray>([{ id: 1 }]);
+
+  useEffect(() => {
+    getInfoDescription();
+  }, []);
+
+  const getInfoDescription = () => {
+    axios.get("http://localhost:8888/api/info/").then((response) => {
+      setInfo(response.data);
+    });
+  };
+
+  console.log(info);
+
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
@@ -19,11 +45,15 @@ const Infoboard: React.FC = () => {
                 <span>Вы отдаете</span>
               </div>
               <div className={s.sendInfoTicker}>
-                <span>1 Bitcoin</span>
+                <span>{`${info[info.length - 1].count} ${
+                  info[info.length - 1].ticker1
+                }`}</span>
               </div>
             </div>
             <div className={s.sendItem}>
-              <img src={btc} alt="" />
+              {props.coinIdSend === "BTC" && <img src={btc} alt="" />}
+              {props.coinIdSend === "ETH" && <img src={eth} alt="" />}
+              {props.coinIdSend === "USDT" && <img src={usdt} alt="" />}
             </div>
           </div>
           <div className={s.point}>
@@ -45,32 +75,40 @@ const Infoboard: React.FC = () => {
           </div>
           <div className={s.get}>
             <div className={s.getItem}>
-              <img src={eth} alt="" />
+              {props.coinIdGet === "BTC" && <img src={btc} alt="" />}
+              {props.coinIdGet === "ETH" && <img src={eth} alt="" />}
+              {props.coinIdGet === "USDT" && <img src={usdt} alt="" />}
             </div>
             <div className={s.getInfo}>
               <div className={s.getInfoText}>
                 <span>Вы получаете</span>
               </div>
               <div className={s.getInfoTicker}>
-                <span>1 Bitcoin</span>
+                <span>{`${info[info.length - 1].total_price} ${
+                  info[info.length - 1].ticker2
+                }`}</span>
               </div>
             </div>
           </div>
         </div>
         <div className={s.walletText}>
-          <span>Получаете на: </span>
+          <span>{`Получаете на: ${info[info.length - 1].wallet} `}</span>
         </div>
       </div>
       <div className={s.description}>
         <div className={s.app}>
-          <span>Номер заявки: XXXX</span>
+          <span>{`Номер заявки: ${info[info.length - 1].id}`}</span>
         </div>
         <div className={s.date}>
-          <span>Дата заявки: xx.xx.xxxx</span>
+          <span>{`Дата заявки: ${info[info.length - 1].created_at}`}</span>
         </div>
         <div className={s.infoBlock}>
-          <span>Отдаете: 1 BTC</span>
-          <span>Получаете: 1 ETH</span>
+          <span>{`Отдаете: ${info[info.length - 1].count} ${
+            info[info.length - 1].ticker1
+          }`}</span>
+          <span>{`Получаете: ${info[info.length - 1].total_price} ${
+            info[info.length - 1].ticker2
+          }`}</span>
           <span>Курс 1 BTC = 1 ETH</span>
         </div>
       </div>
@@ -79,6 +117,7 @@ const Infoboard: React.FC = () => {
           <div className={s.qr}></div>
         </div>
         <div className={s.acceptBlock}>
+          <div className={s.acceptBlockText}>Переведите на: </div>
           <div className={s.acceptWallet}></div>
           <div className={s.submitDescription}></div>
           <div className={s.buttonWrapper}>
@@ -95,4 +134,11 @@ const Infoboard: React.FC = () => {
   );
 };
 
-export default Infoboard;
+const mapStateToProps = (state: RootState) => {
+  return {
+    coinIdSend: state.contentReducer.coinIdSend,
+    coinIdGet: state.contentReducer.coinIdGet,
+  };
+};
+
+export default connect(mapStateToProps)(Infoboard);

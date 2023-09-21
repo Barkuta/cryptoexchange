@@ -78,8 +78,6 @@ const Content: React.FC<PropsType> = (props) => {
     }
   };
 
-  const navigate = useNavigate();
-
   return (
     // <span>{props.price}</span>
     <form onSubmit={props.handleSubmit(props.onSubmit)} className={s.wrapper}>

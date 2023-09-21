@@ -12,6 +12,7 @@ import { usePrice } from "../../hooks/useSelector";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IShippingFields } from "../../app.interface";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type StateType = {
   price: number;
@@ -35,9 +36,13 @@ const ContentContainer: React.FC<StateType> = (props) => {
     formState: { errors },
   } = useForm<IShippingFields>();
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
-    console.log(data);
-    axios.post("http://localhost:8888/api/exchangeInfo/save", data);
+    axios.post("http://localhost:8888/api/exchangeInfo/save", data).then(() => {
+      console.log(data);
+      navigate("/infoboard");
+    });
   };
 
   return (
