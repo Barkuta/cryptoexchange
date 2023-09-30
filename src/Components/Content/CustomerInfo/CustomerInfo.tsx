@@ -1,9 +1,4 @@
-import {
-  FieldErrors,
-  SubmitHandler,
-  useForm,
-  UseFormRegister,
-} from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 import s from "./CustomerInfo.module.css";
 

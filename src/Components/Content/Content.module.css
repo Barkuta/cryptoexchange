@@ -3,6 +3,7 @@
   /* background-color: blue; */
   max-width: 1200px;
   width: 100%;
+  padding-top: 25px;
   margin: 0 auto;
   grid-template-rows: 180px 200px 305px 250px 50px;
 }

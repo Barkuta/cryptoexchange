@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useActions } from "../../../hooks/useActions";
-import { handelClick, select } from "../Assets";
-import s from "./GetBlock.module.css";
+import { select } from "../Assets";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { IShippingFields } from "../../../app.interface";
 import GetBlock from "./GetBlock";

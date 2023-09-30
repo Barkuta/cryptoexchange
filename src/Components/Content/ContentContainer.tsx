@@ -15,6 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import s from "./Content.module.css";
+import Preloader from "../Infoboard/preloader";
 
 type StateType = {
   price: number;
@@ -55,34 +56,7 @@ const ContentContainer: React.FC<StateType> = (props) => {
   return (
     <>
       {props.isFetching ? (
-        <div className={s.preloader}>
-          <svg
-            version="1.1"
-            id="L9"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 100 100"
-            enable-background="new 0 0 0 0"
-            xmlSpace="preserve"
-          >
-            <path
-              fill="#2E5788"
-              d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
-            >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="rotate"
-                dur="1s"
-                from="0 50 50"
-                to="360 50 50"
-                repeatCount="indefinite"
-              />
-            </path>
-          </svg>
-        </div>
+        <Preloader coinIdSend={""} coinIdGet={""} isFetching={false} />
       ) : null}
       <Content
         price={props.price}

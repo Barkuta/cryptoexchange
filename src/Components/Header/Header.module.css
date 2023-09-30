@@ -5,6 +5,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 850px;
+  padding-top: 10px;
 }
 
 .logo {
@@ -42,4 +43,9 @@
 
 .links a :hover {
   color: red;
+}
+
+.logo img {
+  width: 75px;
+  height: 100%;
 }
