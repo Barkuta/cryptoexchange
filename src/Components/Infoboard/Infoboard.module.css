@@ -338,3 +338,36 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.acceptWallet {
+  display: grid;
+  color: #fff;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.acceptWallet span {
+  margin-left: 10px;
+  display: grid;
+  align-content: center;
+}
+
+.preloader {
+  display: grid;
+  backdrop-filter: blur(15px);
+  width: 100%;
+  height: 1470px;
+  z-index: 1;
+  align-content: start;
+  position: absolute;
+}
+
+.preloader svg {
+  width: 200px;
+  height: 100%;
+  display: grid;
+  justify-self: center;
+  margin-top: 10%;
+}

@@ -1,10 +1,7 @@
-import axios from "axios";
-import React, { useCallback, useState } from "react";
-import { useEffect } from "react";
+import React, { useState } from "react";
 import {
   FieldErrors,
   SubmitHandler,
-  useForm,
   UseFormHandleSubmit,
   UseFormRegister,
   UseFormSetValue,
@@ -17,8 +14,6 @@ import CustomerInfo from "./CustomerInfo/CustomerInfo";
 import GetBlockWithSwitcher from "./GetBlockOfContent/GetBlockContainer";
 import SendBlock from "./SendBlockOfContent/SendBlock";
 import btc from "../../Images/Bitcoin-Logo.png";
-import { event } from "jquery";
-import { Link, useNavigate } from "react-router-dom";
 
 type PropsType = {
   price: number;
@@ -61,9 +56,6 @@ const Content: React.FC<PropsType> = (props) => {
   // }, []);
 
   let [price, setPrice] = useState(0);
-  let [consist, setConsist] = useState(false);
-
-  let prevWsPrice = 0;
 
   let wsPrice = props.websocketPrice.p;
 

@@ -8,6 +8,7 @@ type initialStateType = {
   coinIdSend: string;
   coinIdGet: string;
   switcher: boolean;
+  isFetching: boolean;
 };
 
 const initialState: initialStateType = {
@@ -16,6 +17,7 @@ const initialState: initialStateType = {
   coinIdSend: "BTC",
   coinIdGet: "USDT",
   switcher: false,
+  isFetching: false,
 };
 
 export const contentSlice = createSlice({
@@ -69,6 +71,15 @@ export const contentSlice = createSlice({
       return {
         ...state,
         switcher: value,
+      };
+    },
+    toggleIsFetching: (
+      state = initialState,
+      { payload: isFetching }
+    ): initialStateType => {
+      return {
+        ...state,
+        isFetching: isFetching,
       };
     },
   },
