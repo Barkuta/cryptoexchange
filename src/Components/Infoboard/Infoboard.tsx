@@ -7,7 +7,8 @@ import React, { useEffect, useState, memo } from "react";
 import { connect } from "react-redux";
 import { RootState } from "../../Redux/store";
 import { useActions } from "../../hooks/useActions";
-import Preloader from "./preloader";
+import Preloader from "./Preloader";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 export type TypeArray = any;
 
@@ -24,6 +25,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
     {
       getInfoDescription();
     }
+    intervalFn();
   }, []);
 
   const { toggleIsFetching } = useActions();
@@ -37,6 +39,16 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
   };
 
   console.log(info);
+
+  const [interval, setInterval] = useState(0);
+
+  const intervalFn = () => {
+    for (let i = 0; i <= 100; i++) {
+      setTimeout(function timer() {
+        setInterval(i);
+      }, i * 1000);
+    }
+  };
 
   return (
     <div>

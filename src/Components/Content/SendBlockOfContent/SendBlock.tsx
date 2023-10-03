@@ -114,7 +114,7 @@ const SendBlock: React.FC<PropsType> = (props) => {
           )}
           <div className={s.rateInfo}>
             <span>Курс обмена: 1 BTC = {props.price} USDT</span>
-            <span className={s.span2}>Объем:</span>
+            {/* <span className={s.span2}>Объем:</span> */}
           </div>
         </div>
       </form>

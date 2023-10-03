@@ -6,7 +6,7 @@ import Header from "./Components/Header/Header";
 import graph from "../src/Images/acetone-2023913-23048-968.png";
 import { Route, Routes } from "react-router-dom";
 import Infoboard from "./Components/Infoboard/Infoboard";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 function App(props: any) {
   return (
     <div className="App-wrapper">

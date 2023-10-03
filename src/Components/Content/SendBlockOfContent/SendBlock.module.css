@@ -1,3 +1,7 @@
+.sendWrapper {
+  height: 100%;
+}
+
 .send {
   display: grid;
   margin-top: 16px;
@@ -27,7 +31,7 @@
 
 .rateInfo {
   display: grid;
-  grid-template-columns: 300px 309px;
+  /* grid-template-columns: 50% 30%; */
   justify-content: space-between;
 }
 
@@ -42,10 +46,10 @@
 
 .inputBlock {
   display: grid;
-  grid-template-columns: 430px 270px;
+  grid-template-columns: 35% 28%;
   justify-content: space-between;
   margin: 0px 20px 0 20px;
-  height: 50px;
+  height: 100%;
 }
 
 .inputBlock input {
@@ -191,4 +195,28 @@
   margin-top: 15px;
   font-size: 19px;
   color: red;
+}
+
+@media (max-width: 650px) {
+  .inputBlock {
+    gap: 20px;
+    grid-template-columns: none;
+    padding-top: 20px;
+    justify-content: normal;
+  }
+  .sendBlock {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 880px) {
+  .select__header {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .inputBlock input {
+    font-size: 23px;
+  }
 }

@@ -361,7 +361,7 @@
   height: 200%;
   z-index: 1;
   align-content: start;
-  position: absolute;
+  position: fixed;
 }
 
 .preloader svg {

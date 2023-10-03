@@ -16,6 +16,7 @@ export type initialStateType = {
     T: number | null; // Trade time
     m: boolean | null; // Is the buyer the market maker?
     M: boolean | null; // Ignore
+    c: any;
   };
 };
 
@@ -32,6 +33,7 @@ const initialState: initialStateType = {
     T: null, // Trade time
     m: null, // Is the buyer the market maker?
     M: null, // Ignore
+    c: null,
   },
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FieldErrors,
   SubmitHandler,
@@ -13,7 +13,11 @@ import s from "./Content.module.css";
 import CustomerInfo from "./CustomerInfo/CustomerInfo";
 import GetBlockWithSwitcher from "./GetBlockOfContent/GetBlockContainer";
 import SendBlock from "./SendBlockOfContent/SendBlock";
-import btc from "../../Images/Bitcoin-Logo.png";
+import btc from "../../Images/bitcoin.svg";
+import eth from "../../Images/ethereum-eth.svg";
+import ton from "../../Images/ton.png";
+import trx from "../../Images/trx.png";
+import bnb from "../../Images/bnb.png";
 
 type PropsType = {
   price: number;
@@ -37,6 +41,7 @@ type PropsType = {
     T: number | null;
     m: boolean | null;
     M: boolean | null;
+    c: any;
   };
   register: UseFormRegister<IShippingFields>;
   handleSubmit: UseFormHandleSubmit<IShippingFields, undefined>;
@@ -59,7 +64,7 @@ const Content: React.FC<PropsType> = (props) => {
 
   let wsPrice = props.websocketPrice.p;
 
-  setInterval(() => setPrice(wsPrice), 1000);
+  setInterval(() => setPrice(wsPrice), 900);
 
   let changeColor = () => {
     if (wsPrice > price) {
@@ -77,14 +82,16 @@ const Content: React.FC<PropsType> = (props) => {
         <div className={s.titleOne}>
           <span>Внимание!</span>
         </div>
-        <div className={s.description}>
-          <span>
-            Уважаемые клиенты, сумма к получению фиксируется, если изменение
-            курса было не более чем на 0.3%.Если сумма к получению изменилась,
-            более чем на 0.3%, заявка будет пересчитана или произведен возврат
-            согласно правилам сайта. Комиссия за возврат криптовалюты вычитается
-            из полученной суммы.
-          </span>
+        <div>
+          <div className={s.description}>
+            <span>
+              Уважаемые клиенты, сумма к получению фиксируется, если изменение
+              курса было не более чем на 0.3%.Если сумма к получению изменилась,
+              более чем на 0.3%, заявка будет пересчитана или произведен возврат
+              согласно правилам сайта. Комиссия за возврат криптовалюты
+              вычитается из полученной суммы.
+            </span>
+          </div>
         </div>
       </div>
       <SendBlock
@@ -113,7 +120,7 @@ const Content: React.FC<PropsType> = (props) => {
         register={props.register}
         errors={props.errors}
       />
-      <div>
+      <div className={s.submitButtonContainer}>
         <button
           className={s.submitButton}
           onClick={() => {
@@ -177,10 +184,10 @@ const Content: React.FC<PropsType> = (props) => {
         <div className={s.card}>
           <div className={s.infoCardContainer}>
             <div className={s.cardImg}>
-              <img src={btc} alt="" />
+              <img src={eth} alt="" />
             </div>
             <div className={s.cardTicker}>
-              <span>BTC/USDT</span>
+              <span>ETH/USDT</span>
             </div>
             <div className={s.priceTicker}>
               <span className={changeColor() ? s.green : s.red}>
@@ -192,10 +199,10 @@ const Content: React.FC<PropsType> = (props) => {
         <div className={s.card}>
           <div className={s.infoCardContainer}>
             <div className={s.cardImg}>
-              <img src={btc} alt="" />
+              <img src={ton} alt="" />
             </div>
             <div className={s.cardTicker}>
-              <span>BTC/USDT</span>
+              <span>TON/USDT</span>
             </div>
             <div className={s.priceTicker}>
               <span className={changeColor() ? s.green : s.red}>
@@ -207,10 +214,10 @@ const Content: React.FC<PropsType> = (props) => {
         <div className={s.card}>
           <div className={s.infoCardContainer}>
             <div className={s.cardImg}>
-              <img src={btc} alt="" />
+              <img src={trx} alt="" />
             </div>
             <div className={s.cardTicker}>
-              <span>BTC/USDT</span>
+              <span>TRX/USDT</span>
             </div>
             <div className={s.priceTicker}>
               <span className={changeColor() ? s.green : s.red}>
@@ -222,10 +229,10 @@ const Content: React.FC<PropsType> = (props) => {
         <div className={s.card}>
           <div className={s.infoCardContainer}>
             <div className={s.cardImg}>
-              <img src={btc} alt="" />
+              <img src={bnb} alt="" />
             </div>
             <div className={s.cardTicker}>
-              <span>BTC/USDT</span>
+              <span>BNB/USDT</span>
             </div>
             <div className={s.priceTicker}>
               <span className={changeColor() ? s.green : s.red}>

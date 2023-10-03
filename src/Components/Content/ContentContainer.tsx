@@ -15,7 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import s from "./Content.module.css";
-import Preloader from "../Infoboard/preloader";
+import Preloader from "../Infoboard/Preloader";
 
 type StateType = {
   price: number;
