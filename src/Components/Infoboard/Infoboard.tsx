@@ -32,7 +32,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("https://vercel-back-indol.vercel.app/api/").then((response) => {
+    axios.get("https://back2-gamma.vercel.app/api/").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });

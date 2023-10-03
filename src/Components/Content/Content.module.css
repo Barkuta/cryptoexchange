@@ -245,6 +245,8 @@
 
 .change ol {
   margin-top: 35px;
+  display: grid;
+  gap: 5px;
 }
 
 .change li {
@@ -483,18 +485,6 @@
   /* color: #cdcdcd; */
 }
 
-@media (max-width: 1000px) {
-  .priceTicker span {
-    font-size: 120%;
-  }
-}
-
-@media (max-width: 725px) {
-  .priceTicker span {
-    font-size: 100%;
-  }
-}
-
 .green {
   color: green;
 }
@@ -521,6 +511,23 @@
   justify-self: center;
 }
 
+@media (max-width: 1000px) {
+  .priceTicker span {
+    font-size: 120%;
+  }
+}
+
+@media (max-width: 991px) {
+  .wrapper {
+    padding-top: 35px;
+  }
+}
+@media (max-width: 725px) {
+  .priceTicker span {
+    font-size: 100%;
+  }
+}
+
 @media (max-width: 650px) {
   .cardWrapper {
     margin-top: 15px;
@@ -545,12 +552,6 @@
   }
 }
 
-@media (max-width: 991px) {
-  .wrapper {
-    padding-top: 35px;
-  }
-}
-
 @media (max-width: 425px) {
   .wrapper {
     padding-top: 50px;
@@ -558,5 +559,9 @@
 
   .change li {
     font-size: 18px;
+  }
+
+  .ChangeTitle {
+    font-size: 33px;
   }
 }

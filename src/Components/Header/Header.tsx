@@ -8,31 +8,29 @@ const Header = () => {
   return (
     <>
       <Navbar className="pt-4 " collapseOnSelect expand="lg">
-        <Container>
+        <Container className={s.container}>
           <Navbar.Brand href="/">
-            <img
-              src={logo}
-              height="70"
-              width="70"
-              className="d-inline-block alighn-top ms-4"
-            />
+            <img src={logo} height="70" width="70" className={s.logo} />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="d-flex justify-content-sm-end flex-grow-1 pe-3 fs-5 gap-4 ">
-              <Nav.Link className="text-white" href="/">
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className={s.toggle}
+          />
+          <Navbar.Collapse id="responsive-navbar-nav" className={s.menu}>
+            <Nav className={s.menu1}>
+              <Nav.Link className={s.link} href="/">
                 {" "}
                 О сервисе{" "}
               </Nav.Link>
-              <Nav.Link className="text-white" href="/">
+              <Nav.Link className={s.link} href="/">
                 {" "}
                 AML/KYC политика{" "}
               </Nav.Link>
-              <Nav.Link className="text-white" href="/">
+              <Nav.Link className={s.link} href="/">
                 {" "}
                 Правила сайта{" "}
               </Nav.Link>
-              <Nav.Link className="text-white" href="/">
+              <Nav.Link className={s.link} href="/">
                 {" "}
                 Контакты{" "}
               </Nav.Link>

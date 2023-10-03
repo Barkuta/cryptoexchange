@@ -45,6 +45,7 @@
   border: 1px solid #256058;
   background: rgba(52, 17, 17, 0);
   color: #cdcdcd;
+  padding-left: 5px;
 }
 
 .inputBlock select {
@@ -155,6 +156,7 @@
   border: 1px solid #496f9c;
   background: rgba(52, 17, 17, 0);
   color: #cdcdcd;
+  padding-left: 5px;
 }
 
 .errorWallet {
@@ -187,5 +189,13 @@
 @media (max-width: 425px) {
   .inputBlock input {
     font-size: 23px;
+  }
+
+  .wallet input {
+    font-size: 23px;
+  }
+
+  .getTitle span {
+    font-size: 30px;
   }
 }

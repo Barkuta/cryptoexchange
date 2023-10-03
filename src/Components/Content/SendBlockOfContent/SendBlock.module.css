@@ -62,6 +62,7 @@
   border: 1px solid #256058;
   background: rgba(52, 17, 17, 0);
   color: #cdcdcd;
+  padding-left: 5px;
 }
 
 .inputBlock select {
@@ -218,5 +219,9 @@
 @media (max-width: 425px) {
   .inputBlock input {
     font-size: 23px;
+  }
+
+  .sendTitle span {
+    font-size: 30px;
   }
 }

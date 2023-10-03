@@ -53,3 +53,47 @@
 .text {
   color: white;
 }
+
+.menu1 {
+  font-size: 23px;
+  font-weight: 500;
+  gap: 10px;
+}
+
+.link {
+  color: aliceblue;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media (min-width: 991px) {
+  .menu {
+    display: grid;
+    justify-content: end;
+  }
+}
+
+@media (max-width: 991px) {
+  .menu {
+    border-radius: 10px;
+    border: 1px solid #496f9c;
+    background: rgba(9, 21, 127, 0.192);
+    backdrop-filter: blur(5px);
+    color: #cdcdcd;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .logo {
+    margin-left: 20px;
+  }
+
+  .toggle {
+    margin-right: 20px;
+  }
+}
