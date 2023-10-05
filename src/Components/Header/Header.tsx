@@ -8,7 +8,10 @@ const Header = () => {
   return (
     <>
       <Navbar className="pt-4 " collapseOnSelect expand="lg">
-        <Container className={s.container}>
+        <Container
+          className={s.container}
+          style={{ margin: "0 auto", maxWidth: "1200px", width: "100%" }}
+        >
           <Navbar.Brand href="/">
             <img src={logo} height="70" width="70" className={s.logo} />
           </Navbar.Brand>
@@ -18,19 +21,55 @@ const Header = () => {
           />
           <Navbar.Collapse id="responsive-navbar-nav" className={s.menu}>
             <Nav className={s.menu1}>
-              <Nav.Link className={s.link} href="/">
+              <Nav.Link
+                className={s.link}
+                style={{
+                  color: "aliceblue",
+                  paddingLeft: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+                href="/"
+              >
                 {" "}
                 О сервисе{" "}
               </Nav.Link>
-              <Nav.Link className={s.link} href="/">
+              <Nav.Link
+                className={s.link}
+                style={{
+                  color: "aliceblue",
+                  paddingLeft: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+                href="/"
+              >
                 {" "}
                 AML/KYC политика{" "}
               </Nav.Link>
-              <Nav.Link className={s.link} href="/">
+              <Nav.Link
+                className={s.link}
+                style={{
+                  color: "aliceblue",
+                  paddingLeft: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+                href="/"
+              >
                 {" "}
                 Правила сайта{" "}
               </Nav.Link>
-              <Nav.Link className={s.link} href="/">
+              <Nav.Link
+                className={s.link}
+                style={{
+                  color: "aliceblue",
+                  paddingLeft: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+                href="/"
+              >
                 {" "}
                 Контакты{" "}
               </Nav.Link>
@@ -43,19 +82,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <div className={s.wrapper}>
-<div className={s.logo}>
-  <a href="">
-    <img src={logo} alt="" />
-  </a>
-</div>
-<div className={s.links}>
-  <a href="">О сервисе</a>
-  <a href="">AML/KYC политика</a>
-  <a href="">Правила сайта</a>
-  <a href="">Контакты</a>
-</div>
-</div> */
-}

@@ -42,7 +42,7 @@ const GetBlock: React.FC<PropsType> = (props) => {
                 className={s.select2__current}
                 {...props.register("ticker2")}
               >
-                Tether TRC20 (USDT)
+                USDT TRC20
               </span>
               <div className={s.select2__icon}></div>
             </div>
@@ -72,7 +72,7 @@ const GetBlock: React.FC<PropsType> = (props) => {
                 onClick={() => setCurrentGetId(handelClick("USDT"))}
                 className={s.select__item}
               >
-                Tether TRC20 (USDT)
+                USDT TRC20
               </div>
               <div
                 id="USDT"

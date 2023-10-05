@@ -32,7 +32,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("https://back2-gamma.vercel.app/api/").then((response) => {
+    axios.get("https://vercel-back-indol.vercel.app/api/ ").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });
@@ -88,6 +88,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 height="46"
                 viewBox="0 0 32 46"
                 fill="none"
+                style={{ width: "100%", verticalAlign: "middle" }}
               >
                 <path
                   d="M5 5L26.9375 23L5 41"
@@ -154,7 +155,12 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 <span>TGQBbdypCCHMBiNot2hdtfer72noaDtDto</span>
               )}
             </div>
-            <div className={s.submitDescription}></div>
+            <div className={s.submitDescription}>
+              <span>
+                После осуществления перевода, обязательно нажмите кнопку
+                "Оплатил" и ожидайте завершения обмена.
+              </span>
+            </div>
             <div className={s.buttonWrapper}>
               <div className={s.button1}>
                 <button>Оплатил</button>
