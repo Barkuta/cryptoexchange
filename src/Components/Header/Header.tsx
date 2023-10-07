@@ -3,6 +3,7 @@ import s from "./Header.module.css";
 import logo from "../../Images/cryptobulls.svg";
 import Navbar from "react-bootstrap/Navbar";
 import { Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -29,10 +30,10 @@ const Header = () => {
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
-                href="/"
               >
-                {" "}
-                О сервисе{" "}
+                <Link className={s.service} to={"/rules"}>
+                  О сервисе
+                </Link>
               </Nav.Link>
               <Nav.Link
                 className={s.link}
@@ -42,11 +43,12 @@ const Header = () => {
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
-                href="/"
               >
-                {" "}
-                AML/KYC политика{" "}
+                <Link to={"/amlpolicy"} className={s.aml}>
+                  AML/KYC политика{" "}
+                </Link>
               </Nav.Link>
+
               <Nav.Link
                 className={s.link}
                 style={{
@@ -55,23 +57,10 @@ const Header = () => {
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
-                href="/"
               >
-                {" "}
-                Правила сайта{" "}
-              </Nav.Link>
-              <Nav.Link
-                className={s.link}
-                style={{
-                  color: "aliceblue",
-                  paddingLeft: "10px",
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
-                }}
-                href="/"
-              >
-                {" "}
-                Контакты{" "}
+                <Link className={s.contacts} to={"/contacts"}>
+                  Контакты
+                </Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

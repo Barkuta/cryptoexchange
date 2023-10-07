@@ -1,0 +1,36 @@
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  height: 90vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.contacts {
+  margin-bottom: 20px;
+}
+
+.contacts span {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.tg {
+  margin-bottom: 20px;
+}
+
+.tg span {
+  color: white;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.tg a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}

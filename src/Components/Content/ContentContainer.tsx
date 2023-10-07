@@ -46,14 +46,14 @@ const ContentContainer: React.FC<StateType> = (props) => {
 
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
     toggleIsFetching(true);
-    axios.post("https://vercel-back-indol.vercel.app/api/ ", data).then(() => {
+    axios.post(" https://back2-gamma.vercel.app/api ", data).then(() => {
       console.log(data);
       toggleIsFetching(false);
       navigate("/infoboard");
     });
   };
 
-  // https://vercel-back-indol.vercel.app/api/   https://back2-gamma.vercel.app/api//fo development
+  // https://vercel-back-indol.vercel.app/api/   https://back2-gamma.vercel.app/api //fo development
 
   return (
     <>

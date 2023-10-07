@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.text1 {
+  display: grid;
+  gap: 5px;
+}
+
+.text1 span {
+  color: white;
+  font-size: 17px;
+}
