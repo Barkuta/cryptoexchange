@@ -10,7 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Rules from "./Components/Rules/Rules";
 import Aml from "./Components/AML/Aml";
 import Contacts from "./Components/Contacts/Contacts";
-import Partners from "./Components/Partners/Partners";
+import Finish from "./Components/Finish/Finish";
+import InfoboardContainer from "./Components/Infoboard/InfoboardContainer";
+
 function App(props: any) {
   return (
     <div className="App-wrapper">
@@ -23,11 +25,11 @@ function App(props: any) {
           path="/"
           element={<ContentWithSwitcher switchFn={function () {}} />}
         />
-        <Route path="/infoboard" element={<Infoboard />} />
+        <Route path="/infoboard" element={<InfoboardContainer />} />
         <Route path="/rules" element={<Rules />} />
         <Route path="/amlpolicy" element={<Aml />} />
-        <Route path="/partners" element={<Partners />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/finish" element={<Finish />} />
       </Routes>
       <footer className="footer"></footer>
     </div>

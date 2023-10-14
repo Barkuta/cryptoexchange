@@ -9,6 +9,7 @@ import { RootState } from "../../Redux/store";
 import { useActions } from "../../hooks/useActions";
 import Preloader from "./Preloader";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { Link, useNavigate } from "react-router-dom";
 
 export type TypeArray = any;
 
@@ -25,14 +26,13 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
     {
       getInfoDescription();
     }
-    intervalFn();
   }, []);
 
   const { toggleIsFetching } = useActions();
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get(" https://back2-gamma.vercel.app/api ").then((response) => {
+    axios.get("https://vercel-back-indol.vercel.app/api/").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });
@@ -40,21 +40,18 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   console.log(info);
 
-  const [interval, setInterval] = useState(0);
+  const navigate = useNavigate();
 
-  const intervalFn = () => {
-    for (let i = 0; i <= 100; i++) {
-      setTimeout(function timer() {
-        setInterval(i);
-      }, i * 1000);
-    }
+  const submit = () => {
+    navigate("/finish");
+  };
+
+  const submit1 = () => {
+    navigate("/");
   };
 
   return (
-    <div>
-      {props.isFetching ? (
-        <Preloader coinIdSend={""} coinIdGet={""} isFetching={false} />
-      ) : null}
+    <form>
       <div className={s.wrapper}>
         <div className={s.header}>
           <span>Ожидается оплата</span>
@@ -163,25 +160,17 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
             </div>
             <div className={s.buttonWrapper}>
               <div className={s.button1}>
-                <button>Оплатил</button>
+                <button onClick={submit}>Оплатил</button>
               </div>
               <div className={s.button2}>
-                <button>Отмена</button>
+                <button onClick={submit1}>Отмена</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 });
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    coinIdSend: state.contentReducer.coinIdSend,
-    coinIdGet: state.contentReducer.coinIdGet,
-    isFetching: state.contentReducer.isFetching,
-  };
-};
-
-export default connect(mapStateToProps)(Infoboard);
+export default Infoboard;
