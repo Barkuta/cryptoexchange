@@ -4,7 +4,7 @@
     "h"
     "c"
     "f";
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 1fr 50px;
   background: linear-gradient(
       243deg,
       rgb(54 255 195 / 44%) -20.7%,
@@ -42,5 +42,5 @@
 .footer {
   display: grid;
   grid-area: f;
-  background-color: rgb(163, 29, 193);
+  background-color: rgb(20, 20, 20);
 }

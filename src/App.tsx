@@ -5,13 +5,13 @@ import ContentWithSwitcher from "./Components/Content/ContentContainer";
 import Header from "./Components/Header/Header";
 import graph from "../src/Images/acetone-2023913-23048-968.png";
 import { Route, Routes } from "react-router-dom";
-import Infoboard from "./Components/Infoboard/Infoboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Rules from "./Components/Rules/Rules";
 import Aml from "./Components/AML/Aml";
 import Contacts from "./Components/Contacts/Contacts";
-import Finish from "./Components/Finish/Finish";
 import InfoboardContainer from "./Components/Infoboard/InfoboardContainer";
+import FinishContainer from "./Components/Finish/FinishContainer";
+import Footer from "./Components/Footer/Footer";
 
 function App(props: any) {
   return (
@@ -29,9 +29,9 @@ function App(props: any) {
         <Route path="/rules" element={<Rules />} />
         <Route path="/amlpolicy" element={<Aml />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/finish" element={<Finish />} />
+        <Route path="/finish" element={<FinishContainer />} />
       </Routes>
-      <footer className="footer"></footer>
+      <Footer />
     </div>
   );
 }

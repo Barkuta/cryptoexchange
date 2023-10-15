@@ -11,6 +11,8 @@ import Preloader from "./Preloader";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { Link, useNavigate } from "react-router-dom";
 
+// export type TypeArray = { id: number; count: number };
+
 export type TypeArray = any;
 
 export type PropsType = {
@@ -20,7 +22,7 @@ export type PropsType = {
 };
 
 const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
-  const [info, setInfo] = useState<TypeArray>([{ id: 1 }]);
+  const [info, setInfo] = useState<TypeArray[]>([{ id: 1 }]);
 
   useEffect(() => {
     {
