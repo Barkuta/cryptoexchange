@@ -165,7 +165,7 @@ const Content: React.FC<PropsType> = (props) => {
           </div>
         </div>
       </div>
-      <div className={s.cardWrapper}>
+      {/* <div className={s.cardWrapper}>
         <div className={s.card}>
           <div className={s.infoCardContainer}>
             <div className={s.cardImg}>
@@ -241,9 +241,7 @@ const Content: React.FC<PropsType> = (props) => {
             </div>
           </div>
         </div>
-
-        {/* <span>{Math.abs(props.websocketPrice.p)}</span> */}
-      </div>
+      </div> */}
     </form>
   );
 };

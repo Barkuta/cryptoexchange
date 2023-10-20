@@ -2,6 +2,9 @@ import s from "./Infoboard.module.css";
 import btc from "../../Images/bitcoin.svg";
 import eth from "../../Images/ethereum-eth.svg";
 import usdt from "../../Images/tether-1.svg";
+import trx from "../../Images/trx.png";
+import xrp from "../../Images/xrp.png";
+import sol from "../../Images/sol.png";
 import axios from "axios";
 import React, { useEffect, useState, memo } from "react";
 import { connect } from "react-redux";
@@ -40,7 +43,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
     });
   };
 
-  console.log(info);
+  console.log(info[info.length - 1].ticker1);
 
   const navigate = useNavigate();
 
@@ -75,9 +78,24 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 </div>
               </div>
               <div className={s.sendItem}>
-                {props.coinIdSend === "BTC" && <img src={btc} alt="" />}
-                {props.coinIdSend === "ETH" && <img src={eth} alt="" />}
-                {props.coinIdSend === "USDT" && <img src={usdt} alt="" />}
+                {info[info.length - 1].ticker1 === "Bitcoin(BTC)" && (
+                  <img src={btc} alt="" />
+                )}
+                {info[info.length - 1].ticker1 === "Ethereum(ETH)" && (
+                  <img src={eth} alt="" />
+                )}
+                {info[info.length - 1].ticker1 === "Tether TRC20(USDT)" && (
+                  <img src={usdt} alt="" />
+                )}
+                {info[info.length - 1].ticker1 === "Tron(TRX)" && (
+                  <img src={trx} alt="" />
+                )}
+                {info[info.length - 1].ticker1 === "Ripple(XRP)" && (
+                  <img src={xrp} alt="" />
+                )}
+                {info[info.length - 1].ticker1 === "Solana(SOL)" && (
+                  <img src={sol} alt="" />
+                )}
               </div>
             </div>
             <div className={s.point}>
@@ -100,9 +118,24 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
             </div>
             <div className={s.get}>
               <div className={s.getItem}>
-                {props.coinIdGet === "BTC" && <img src={btc} alt="" />}
-                {props.coinIdGet === "ETH" && <img src={eth} alt="" />}
-                {props.coinIdGet === "USDT" && <img src={usdt} alt="" />}
+                {info[info.length - 1].ticker2 === "Bitcoin(BTC)" && (
+                  <img src={btc} alt="" />
+                )}
+                {info[info.length - 1].ticker2 === "Ethereum(ETH)" && (
+                  <img src={eth} alt="" />
+                )}
+                {info[info.length - 1].ticker2 === "Tether TRC20(USDT)" && (
+                  <img src={usdt} alt="" />
+                )}
+                {info[info.length - 1].ticker2 === "Tron(TRX)" && (
+                  <img src={trx} alt="" />
+                )}
+                {info[info.length - 1].ticker2 === "Ripple(XRP)" && (
+                  <img src={xrp} alt="" />
+                )}
+                {info[info.length - 1].ticker2 === "Solana(SOL)" && (
+                  <img src={sol} alt="" />
+                )}
               </div>
               <div className={s.getInfo}>
                 <div className={s.getInfoText}>
@@ -134,7 +167,6 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
             <span>{`Получаете: ${info[info.length - 1].total_price} ${
               info[info.length - 1].ticker2
             }`}</span>
-            <span>Курс 1 BTC = 1 ETH</span>
           </div>
         </div>
         <div className={s.requisites}>

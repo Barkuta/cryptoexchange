@@ -13,10 +13,14 @@ export function WithSwitchTickersHOC<WP extends IntrinsicAttributes>(
   return (props: WP) => {
     let switchFn: () => any = () => {
       if (props.switcher) {
-        let res = Math.abs(props.count / props.price);
+        let res = Math.abs(
+          props.count / props.price + (props.count / props.price) * 0.015
+        );
         return res.toFixed(6);
       } else {
-        return Math.abs(props.count * props.price);
+        return Math.abs(
+          props.count * props.price + props.count * props.price * 0.015
+        );
       }
     };
     return <WrappedComponent {...props} switchFn={switchFn} />;

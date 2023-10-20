@@ -49,7 +49,7 @@ const SendBlock: React.FC<PropsType> = (props) => {
                   className={s.select__current}
                   {...props.register("ticker1")}
                 >
-                  Bitcoin
+                  Bitcoin(BTC)
                 </span>
                 <div className={s.select__icon}></div>
               </div>
@@ -63,38 +63,58 @@ const SendBlock: React.FC<PropsType> = (props) => {
                   onClick={() => setCurrentSendId(handelClick("BTC"))}
                   className={s.select__item}
                 >
-                  Bitcoin
+                  Bitcoin(BTC)
                 </div>
                 <div
                   id="ETH"
                   onClick={() => setCurrentSendId(handelClick("ETH"))}
                   className={s.select__item}
                 >
-                  Ethereum
+                  Ethereum(ETH)
                 </div>
                 <div
                   id="USDT"
                   onClick={() => setCurrentSendId(handelClick("USDT"))}
                   className={s.select__item}
                 >
-                  Tether TRC20 (USDT)
+                  Tether TRC20(USDT)
                 </div>
+
                 <div
-                  id="USDT"
-                  onClick={() => setCurrentSendId(handelClick("USDT"))}
+                  id="TRX"
+                  onClick={() => setCurrentSendId(handelClick("TRX"))}
                   className={s.select__item}
                 >
-                  Tether ERC20 (USDT)
+                  Tron(TRX)
                 </div>
                 <div
-                  id="USDT"
-                  onClick={() => setCurrentSendId(handelClick("USDT"))}
+                  id="XRP"
+                  onClick={() => setCurrentSendId(handelClick("XRP"))}
                   className={s.select__item}
                 >
-                  Tether BEP20 (USDT)
+                  Ripple(XRP)
                 </div>
-                <div className={s.select__item}>Наличные RUB</div>
-                <div className={s.select__item}>Наличные USD</div>
+                <div
+                  id="SOL"
+                  onClick={() => setCurrentSendId(handelClick("SOL"))}
+                  className={s.select__item}
+                >
+                  Solana(SOL)
+                </div>
+                <div
+                  id="MATIC"
+                  onClick={() => setCurrentSendId(handelClick("MATIC"))}
+                  className={s.select__item}
+                >
+                  Polygon(MATIC)
+                </div>
+                <div
+                  id="DOT"
+                  onClick={() => setCurrentSendId(handelClick("DOT"))}
+                  className={s.select__item}
+                >
+                  Polkadot(DOT)
+                </div>
               </div>
             </div>
             <input
@@ -113,7 +133,6 @@ const SendBlock: React.FC<PropsType> = (props) => {
             <span className={s.errorCount}>This field is required</span>
           )}
           <div className={s.rateInfo}>
-            <span>Курс обмена: 1 BTC = {props.price} USDT</span>
             {/* <span className={s.span2}>Объем:</span> */}
           </div>
         </div>

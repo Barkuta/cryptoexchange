@@ -42,7 +42,7 @@ const GetBlock: React.FC<PropsType> = (props) => {
                 className={s.select2__current}
                 {...props.register("ticker2")}
               >
-                USDT TRC20
+                Tether TRC20(USDT)
               </span>
               <div className={s.select2__icon}></div>
             </div>
@@ -58,38 +58,57 @@ const GetBlock: React.FC<PropsType> = (props) => {
                 onClick={() => setCurrentGetId(handelClick("BTC"))}
                 className={s.select__item}
               >
-                Bitcoin
+                Bitcoin(BTC)
               </div>
               <div
                 id="ETH"
                 onClick={() => setCurrentGetId(handelClick("ETH"))}
                 className={s.select__item}
               >
-                Ethereum
+                Ethereum(ETH)
               </div>
               <div
                 id="USDT"
                 onClick={() => setCurrentGetId(handelClick("USDT"))}
                 className={s.select__item}
               >
-                USDT TRC20
+                Tether TRC20(USDT)
               </div>
               <div
-                id="USDT"
-                onClick={() => setCurrentGetId(handelClick("USDT"))}
+                id="TRX"
+                onClick={() => setCurrentGetId(handelClick("TRX"))}
                 className={s.select__item}
               >
-                Tether ERC20 (USDT)
+                Tron(TRX)
               </div>
               <div
-                id="USDT"
-                onClick={() => setCurrentGetId(handelClick("USDT"))}
+                id="XRP"
+                onClick={() => setCurrentGetId(handelClick("XRP"))}
                 className={s.select__item}
               >
-                Tether BEP20 (USDT)
+                Ripple(XRP)
               </div>
-              <div className={s.select__item}>Наличные RUB</div>
-              <div className={s.select__item}>Наличные USD</div>
+              <div
+                id="SOL"
+                onClick={() => setCurrentGetId(handelClick("SOL"))}
+                className={s.select__item}
+              >
+                Solana(SOL)
+              </div>
+              <div
+                id="MATIC"
+                onClick={() => setCurrentGetId(handelClick("MATIC"))}
+                className={s.select__item}
+              >
+                Polygon(MATIC)
+              </div>
+              <div
+                id="DOT"
+                onClick={() => setCurrentGetId(handelClick("DOT"))}
+                className={s.select__item}
+              >
+                Polkadot(DOT)
+              </div>
             </div>
           </div>
           <input

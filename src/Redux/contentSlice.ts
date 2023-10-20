@@ -9,6 +9,7 @@ type initialStateType = {
   coinIdGet: string;
   switcher: boolean;
   isFetching: boolean;
+  error: boolean;
 };
 
 const initialState: initialStateType = {
@@ -18,6 +19,7 @@ const initialState: initialStateType = {
   coinIdGet: "USDT",
   switcher: false,
   isFetching: false,
+  error: false,
 };
 
 export const contentSlice = createSlice({
@@ -93,13 +95,21 @@ export const getPriceThunk =
   async (dispatch: AppDispatch) => {
     if (coinIdSend !== coinIdGet) {
       let result = await getRequest.getPrice(coinIdSend, coinIdGet);
-      if (!result) {
-        result = await getRequest.getPrice(coinIdGet, coinIdSend);
-        dispatch(setPrice(Math.abs(result.price)));
+      let result2 = await getRequest.getPrice(coinIdGet, coinIdSend);
+      if (!result && !result2) {
+        dispatch(setPrice(0));
+        alert("Пары не существует");
+      }
+      if (!result && result2) {
+        dispatch(setPrice(Math.abs(result2.price)));
         dispatch(setSwitchCondition(true));
         console.log("Error2");
-      } else dispatch(setSwitchCondition(false));
-      dispatch(setPrice(Math.abs(result.price)));
+      } else if (result) {
+        dispatch(setSwitchCondition(false));
+        dispatch(setPrice(Math.abs(result.price)));
+      }
+    } else {
+      alert("Пары не существует");
     } //Можно alert || true/false swithcer
   };
 
