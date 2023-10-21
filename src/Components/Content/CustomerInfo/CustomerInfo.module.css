@@ -40,7 +40,7 @@
 .emailBlock input {
   margin-top: 10px;
   height: 45px;
-  font-size: 25px;
+  font-size: 20px;
   width: 40%;
   outline: none;
   border-radius: 10px;
@@ -81,20 +81,9 @@
   color: red;
 }
 
-@media (max-width: 425px) {
-  .getTitle span {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 48px;
-    text-align: center;
-    color: #cdcdcd;
-  }
-}
-
-@media (max-width: 520px) {
+@media (max-width: 700px) {
   .emailBlock input {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -103,12 +92,23 @@
     height: 135px;
   }
   .emailBlock input {
-    width: 80%;
+    width: 90%;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 520px) {
   .emailBlock input {
-    width: 60%;
+    width: 90%;
+  }
+}
+
+@media (max-width: 425px) {
+  .getTitle span {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 48px;
+    text-align: center;
+    color: #cdcdcd;
   }
 }

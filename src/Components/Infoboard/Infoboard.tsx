@@ -16,7 +16,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 // export type TypeArray = { id: number; count: number };
 
-export type TypeArray = any;
+export type TypeArray = {
+  created_at: string;
+  id: number;
+  count: string;
+  total_price: string;
+  wallet: string;
+  email: string;
+  ticker1: string;
+  ticker2: string;
+  memo: string;
+};
 
 export type PropsType = {
   coinIdSend: string;
@@ -25,7 +35,17 @@ export type PropsType = {
 };
 
 const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
-  const [info, setInfo] = useState<TypeArray[]>([{ id: 1 }]);
+  const [info, setInfo] = useState<TypeArray>({
+    id: 0,
+    count: "",
+    total_price: "",
+    wallet: "",
+    email: "",
+    ticker1: "",
+    ticker2: "",
+    memo: "",
+    created_at: "",
+  });
 
   useEffect(() => {
     {
@@ -37,13 +57,13 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("https://vercel-back-indol.vercel.app/api/").then((response) => {
+    axios.get("https://vercel-back-v1.vercel.app/api").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });
   };
 
-  console.log(info[info.length - 1].ticker1);
+  console.log(info);
 
   const navigate = useNavigate();
 
@@ -72,30 +92,18 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                   <span>Вы отдаете</span>
                 </div>
                 <div className={s.sendInfoTicker}>
-                  <span>{`${info[info.length - 1].count} ${
-                    info[info.length - 1].ticker1
-                  }`}</span>
+                  <span>{`${info.count} ${info.ticker1}`}</span>
                 </div>
               </div>
               <div className={s.sendItem}>
-                {info[info.length - 1].ticker1 === "Bitcoin(BTC)" && (
-                  <img src={btc} alt="" />
-                )}
-                {info[info.length - 1].ticker1 === "Ethereum(ETH)" && (
-                  <img src={eth} alt="" />
-                )}
-                {info[info.length - 1].ticker1 === "Tether TRC20(USDT)" && (
+                {info.ticker1 === "Bitcoin(BTC)" && <img src={btc} alt="" />}
+                {info.ticker1 === "Ethereum(ETH)" && <img src={eth} alt="" />}
+                {info.ticker1 === "Tether TRC20(USDT)" && (
                   <img src={usdt} alt="" />
                 )}
-                {info[info.length - 1].ticker1 === "Tron(TRX)" && (
-                  <img src={trx} alt="" />
-                )}
-                {info[info.length - 1].ticker1 === "Ripple(XRP)" && (
-                  <img src={xrp} alt="" />
-                )}
-                {info[info.length - 1].ticker1 === "Solana(SOL)" && (
-                  <img src={sol} alt="" />
-                )}
+                {info.ticker1 === "Tron(TRX)" && <img src={trx} alt="" />}
+                {info.ticker1 === "Ripple(XRP)" && <img src={xrp} alt="" />}
+                {info.ticker1 === "Solana(SOL)" && <img src={sol} alt="" />}
               </div>
             </div>
             <div className={s.point}>
@@ -118,64 +126,45 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
             </div>
             <div className={s.get}>
               <div className={s.getItem}>
-                {info[info.length - 1].ticker2 === "Bitcoin(BTC)" && (
-                  <img src={btc} alt="" />
-                )}
-                {info[info.length - 1].ticker2 === "Ethereum(ETH)" && (
-                  <img src={eth} alt="" />
-                )}
-                {info[info.length - 1].ticker2 === "Tether TRC20(USDT)" && (
+                {info.ticker2 === "Bitcoin(BTC)" && <img src={btc} alt="" />}
+                {info.ticker2 === "Ethereum(ETH)" && <img src={eth} alt="" />}
+                {info.ticker2 === "Tether TRC20(USDT)" && (
                   <img src={usdt} alt="" />
                 )}
-                {info[info.length - 1].ticker2 === "Tron(TRX)" && (
-                  <img src={trx} alt="" />
-                )}
-                {info[info.length - 1].ticker2 === "Ripple(XRP)" && (
-                  <img src={xrp} alt="" />
-                )}
-                {info[info.length - 1].ticker2 === "Solana(SOL)" && (
-                  <img src={sol} alt="" />
-                )}
+                {info.ticker2 === "Tron(TRX)" && <img src={trx} alt="" />}
+                {info.ticker2 === "Ripple(XRP)" && <img src={xrp} alt="" />}
+                {info.ticker2 === "Solana(SOL)" && <img src={sol} alt="" />}
               </div>
               <div className={s.getInfo}>
                 <div className={s.getInfoText}>
                   <span>Вы получаете</span>
                 </div>
                 <div className={s.getInfoTicker}>
-                  <span>{`${info[info.length - 1].total_price} ${
-                    info[info.length - 1].ticker2
-                  }`}</span>
+                  <span>{`${info.total_price} ${info.ticker2}`}</span>
                 </div>
               </div>
             </div>
           </div>
           <div className={s.walletText}>
-            <span>{`Получаете на: ${info[info.length - 1].wallet} `}</span>
+            <span>{`Получаете на: ${info.wallet} `}</span>
           </div>
         </div>
         <div className={s.description}>
           <div className={s.app}>
-            <span>{`Номер заявки: ${info[info.length - 1].id}`}</span>
+            <span>{`Номер заявки: ${info.id}`}</span>
           </div>
           <div className={s.date}>
-            <span>{`Дата заявки: ${info[info.length - 1].created_at}`}</span>
+            <span>{`Дата заявки: ${info.created_at}`}</span>
           </div>
           <div className={s.infoBlock}>
-            <span>{`Отдаете: ${info[info.length - 1].count} ${
-              info[info.length - 1].ticker1
-            }`}</span>
-            <span>{`Получаете: ${info[info.length - 1].total_price} ${
-              info[info.length - 1].ticker2
-            }`}</span>
+            <span>{`Отдаете: ${info.count} ${info.ticker1}`}</span>
+            <span>{`Получаете: ${info.total_price} ${info.ticker2}`}</span>
           </div>
         </div>
         <div className={s.requisites}>
-          <div className={s.qrBlock}>
-            <div className={s.qr}></div>
-          </div>
           <div className={s.acceptBlock}>
-            <div className={s.acceptBlockText}>Переведите на: </div>
-            <div className={s.acceptWallet}>
+            <div className={s.acceptBlockText}>Как перевести: </div>
+            {/* <div className={s.acceptWallet}>
               {props.coinIdSend === "BTC" && (
                 <span>1NHMsCR3NoBaJGMRgRPQj3msHyfgE3m4b5</span>
               )}
@@ -185,6 +174,19 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
               {props.coinIdSend === "USDT" && (
                 <span>TGQBbdypCCHMBiNot2hdtfer72noaDtDto</span>
               )}
+            </div> */}
+            <div className={s.submitDescription1}>
+              <span>
+                1. Выполните вход в свою платежную систему
+                <br />
+                2. Выберите нужную валюту {info.ticker1}
+                <br />
+                3. Переведите указанную сумму на адрес:
+                <br />
+                {info.ticker1 === "Bitcoin(BTC)" && (
+                  <span>1NHMsCR3NoBaJGMRgRPQj3msHyfgE3m4b5</span>
+                )}
+              </span>
             </div>
             <div className={s.submitDescription}>
               <span>

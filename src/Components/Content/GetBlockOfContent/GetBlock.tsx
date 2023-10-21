@@ -11,6 +11,7 @@ type PropsType = {
   setSecondConsist: React.Dispatch<React.SetStateAction<boolean>>;
   secondConsist: boolean;
   errors: FieldErrors<IShippingFields>;
+  coinIdGet: string;
 };
 
 const GetBlock: React.FC<PropsType> = (props) => {
@@ -96,6 +97,13 @@ const GetBlock: React.FC<PropsType> = (props) => {
                 Solana(SOL)
               </div>
               <div
+                id="BNB"
+                onClick={() => setCurrentGetId(handelClick("BNB"))}
+                className={s.select__item}
+              >
+                Binance Coin(BNB)
+              </div>
+              <div
                 id="MATIC"
                 onClick={() => setCurrentGetId(handelClick("MATIC"))}
                 className={s.select__item}
@@ -119,7 +127,17 @@ const GetBlock: React.FC<PropsType> = (props) => {
           />
         </div>
         <div className={s.wallet}>
-          <div className={s.walletTextBlock}>На кошелек*</div>
+          <div className={s.walletTextBlock}>
+            На кошелек в сети {props.coinIdGet == "USDT" && "TRC20"}
+            {props.coinIdGet == "BTC" && "BEP20"}
+            {props.coinIdGet == "ETH" && "ERC20"}
+            {props.coinIdGet == "TRX" && "TRC20"}
+            {props.coinIdGet == "DOT" && "DOT"}
+            {props.coinIdGet == "XRP" && "XRP"}
+            {props.coinIdGet == "SOL" && "SOL"}
+            {props.coinIdGet == "BNB" && "BEP20"}
+            {props.coinIdGet == "MATIC" && "MATIC"}*
+          </div>
           <input
             {...props.register("wallet", {
               required: true,
@@ -129,6 +147,16 @@ const GetBlock: React.FC<PropsType> = (props) => {
             <span className={s.errorWallet}>This field is required</span>
           )}
         </div>
+        {props.coinIdGet == "XRP" && (
+          <div className={s.wallet}>
+            <div className={s.walletTextBlock}>MEMO:*</div>
+            <input
+              {...props.register("memo", {
+                required: false,
+              })}
+            />
+          </div>
+        )}
       </form>
     </div>
   );

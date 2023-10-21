@@ -1,3 +1,4 @@
+import { memo } from "react";
 export interface IShippingFields {
   count: string;
   total_price: string;
@@ -5,4 +6,5 @@ export interface IShippingFields {
   email: string;
   ticker1: string;
   ticker2: string;
+  memo: string;
 }

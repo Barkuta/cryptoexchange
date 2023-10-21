@@ -109,6 +109,7 @@ export const getPriceThunk =
         dispatch(setPrice(Math.abs(result.price)));
       }
     } else {
+      dispatch(setPrice(0));
       alert("Пары не существует");
     } //Можно alert || true/false swithcer
   };

@@ -10,7 +10,17 @@ export type PropsType = {
 };
 
 const Finish: React.FC<PropsType> = (props: PropsType) => {
-  const [info, setInfo] = useState<TypeArray>([{ id: 1 }]);
+  const [info, setInfo] = useState<TypeArray>({
+    id: 0,
+    count: "",
+    total_price: "",
+    wallet: "",
+    email: "",
+    ticker1: "",
+    ticker2: "",
+    memo: "",
+    created_at: "",
+  });
 
   useEffect(() => {
     {
@@ -22,7 +32,7 @@ const Finish: React.FC<PropsType> = (props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("https://vercel-back-indol.vercel.app/api/").then((response) => {
+    axios.get("https://vercel-back-v1.vercel.app/api").then((response) => {
       setInfo(response.data[response.data.length - 1].id);
       toggleIsFetching(false);
     });

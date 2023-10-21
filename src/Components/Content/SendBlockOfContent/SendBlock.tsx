@@ -102,6 +102,13 @@ const SendBlock: React.FC<PropsType> = (props) => {
                   Solana(SOL)
                 </div>
                 <div
+                  id="BNB"
+                  onClick={() => setCurrentSendId(handelClick("BNB"))}
+                  className={s.select__item}
+                >
+                  Binance Coin(BNB)
+                </div>
+                <div
                   id="MATIC"
                   onClick={() => setCurrentSendId(handelClick("MATIC"))}
                   className={s.select__item}
