@@ -61,7 +61,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("http://localhost:8888/api/info/").then((response) => {
+    axios.get("https://vercel-back-v1.vercel.app/api").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });

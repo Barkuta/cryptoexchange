@@ -46,7 +46,7 @@ const ContentContainer: React.FC<StateType> = (props) => {
 
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
     toggleIsFetching(true);
-    axios.post("http://localhost:8888/api/exchangeInfo/save", data).then(() => {
+    axios.post("https://vercel-back-v1.vercel.app/api", data).then(() => {
       console.log(data);
       toggleIsFetching(false);
       navigate("/infoboard");
