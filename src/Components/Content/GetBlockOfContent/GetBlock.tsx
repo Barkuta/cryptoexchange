@@ -128,15 +128,17 @@ const GetBlock: React.FC<PropsType> = (props) => {
         </div>
         <div className={s.wallet}>
           <div className={s.walletTextBlock}>
-            На кошелек в сети {props.coinIdGet == "USDT" && "TRC20"}
-            {props.coinIdGet == "BTC" && "BEP20"}
-            {props.coinIdGet == "ETH" && "ERC20"}
-            {props.coinIdGet == "TRX" && "TRC20"}
-            {props.coinIdGet == "DOT" && "DOT"}
-            {props.coinIdGet == "XRP" && "XRP"}
-            {props.coinIdGet == "SOL" && "SOL"}
-            {props.coinIdGet == "BNB" && "BEP20"}
-            {props.coinIdGet == "MATIC" && "MATIC"}*
+            <span>
+              На кошелек в сети {props.coinIdGet == "USDT" && "TRC20"}
+              {props.coinIdGet == "BTC" && "Bictoin(BTC)"}
+              {props.coinIdGet == "ETH" && "Ethereum(ERC20)"}
+              {props.coinIdGet == "TRX" && "Tron(TRC20)"}
+              {props.coinIdGet == "DOT" && "Polkadot(DOT)"}
+              {props.coinIdGet == "XRP" && "Ripple"}
+              {props.coinIdGet == "SOL" && "Solana(SOL)"}
+              {props.coinIdGet == "BNB" && "BEP20"}
+              {props.coinIdGet == "MATIC" && "Polygon(MATIC)"}*
+            </span>
           </div>
           <input
             {...props.register("wallet", {
@@ -149,10 +151,11 @@ const GetBlock: React.FC<PropsType> = (props) => {
         </div>
         {props.coinIdGet == "XRP" && (
           <div className={s.wallet}>
-            <div className={s.walletTextBlock}>MEMO:*</div>
+            <div className={s.walletTextBlock}>MEMO(если требуется):</div>
             <input
               {...props.register("memo", {
                 required: false,
+                value: "0",
               })}
             />
           </div>

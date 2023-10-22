@@ -132,13 +132,18 @@
 
 .wallet {
   display: grid;
-  grid-template-rows: 30% 10%;
+  /* grid-template-rows: 30% 10%; */
   margin-left: 20px;
   margin-right: 20px;
   height: 100%;
 }
 
 .walletTextBlock {
+  display: grid;
+  color: #cdcdcd;
+}
+
+.walletTextBlock span {
   font-style: normal;
   font-weight: 300;
   font-size: 20px;

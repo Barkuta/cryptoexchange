@@ -5,6 +5,10 @@ import usdt from "../../Images/tether-1.svg";
 import trx from "../../Images/trx.png";
 import xrp from "../../Images/xrp.png";
 import sol from "../../Images/sol.png";
+import bnb from "../../Images/bnb.png";
+import matic from "../../Images/matic.png";
+import dot from "../../Images/DOT.webp";
+
 import axios from "axios";
 import React, { useEffect, useState, memo } from "react";
 import { connect } from "react-redux";
@@ -57,7 +61,7 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
 
   const getInfoDescription = () => {
     toggleIsFetching(true);
-    axios.get("https://vercel-back-v1.vercel.app/api").then((response) => {
+    axios.get("http://localhost:8888/api/info/").then((response) => {
       setInfo(response.data);
       toggleIsFetching(false);
     });
@@ -104,6 +108,13 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 {info.ticker1 === "Tron(TRX)" && <img src={trx} alt="" />}
                 {info.ticker1 === "Ripple(XRP)" && <img src={xrp} alt="" />}
                 {info.ticker1 === "Solana(SOL)" && <img src={sol} alt="" />}
+                {info.ticker1 === "Binance Coin(BNB)" && (
+                  <img src={bnb} alt="" />
+                )}
+                {info.ticker1 === "Polygon(MATIC)" && (
+                  <img src={matic} alt="" />
+                )}
+                {info.ticker1 === "Polkadot(DOT)" && <img src={dot} alt="" />}
               </div>
             </div>
             <div className={s.point}>
@@ -134,6 +145,13 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 {info.ticker2 === "Tron(TRX)" && <img src={trx} alt="" />}
                 {info.ticker2 === "Ripple(XRP)" && <img src={xrp} alt="" />}
                 {info.ticker2 === "Solana(SOL)" && <img src={sol} alt="" />}
+                {info.ticker2 === "Binance Coin(BNB)" && (
+                  <img src={bnb} alt="" />
+                )}
+                {info.ticker2 === "Polygon(MATIC)" && (
+                  <img src={matic} alt="" />
+                )}
+                {info.ticker2 === "Polkadot(DOT)" && <img src={dot} alt="" />}
               </div>
               <div className={s.getInfo}>
                 <div className={s.getInfoText}>
@@ -184,7 +202,85 @@ const Infoboard: React.FC<PropsType> = memo((props: PropsType) => {
                 3. Переведите указанную сумму на адрес:
                 <br />
                 {info.ticker1 === "Bitcoin(BTC)" && (
-                  <span>1NHMsCR3NoBaJGMRgRPQj3msHyfgE3m4b5</span>
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      bc1qu8q32s8zwyut5p09hev2mmqpxarmwmxxy9f9qm
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Bictoin(BTC))</span>
+                  </div>
+                )}
+                {info.ticker1 === "Ethereum(ETH)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      0x3eba112b6459B6BCedcEbD029f50e3B411Fa2FC5
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Ethereum(ERC20))</span>
+                  </div>
+                )}
+                {info.ticker1 === "Tether TRC20(USDT)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      TXH67P4K8pWHhgQCE797h1V8HceNjwpDS2
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: TRC20)</span>
+                  </div>
+                )}
+                {info.ticker1 === "Tron(TRX)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      TXH67P4K8pWHhgQCE797h1V8HceNjwpDS2
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: TRC20)</span>
+                  </div>
+                )}
+                {info.ticker1 === "Ripple(XRP)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      rUrzsNPsYc2ZXVsjoiuV23VxZvV667buCc
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Ripple(XRP))</span>
+                  </div>
+                )}
+                {info.ticker1 === "Solana(SOL)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      5dJJiibAZAhfh99phmz8q8zg7xm7PghHwvrdxKwRvUAj
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Solana)</span>
+                  </div>
+                )}
+                {info.ticker1 === "Binance Coin(BNB)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      0x3eba112b6459B6BCedcEbD029f50e3B411Fa2FC5
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: BEP20)</span>
+                  </div>
+                )}
+                {info.ticker1 === "Polygon(MATIC)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      0x3eba112b6459B6BCedcEbD029f50e3B411Fa2FC5
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Polygon)</span>
+                  </div>
+                )}
+                {info.ticker1 === "Polkadot(DOT)" && (
+                  <div>
+                    <span style={{ color: "green", wordBreak: "break-all" }}>
+                      16Xn3hnxRqMF5CfDraHo291vB61vVJwcg4mUFbanQzCZSyt5
+                    </span>
+                    <br />
+                    <span>(Сеть перевода: Polkadot)</span>
+                  </div>
                 )}
               </span>
             </div>
